@@ -1,0 +1,27 @@
+/* Mirrors client/src/theme/tokens.js — keep both in sync by hand. */
+:root {
+  --color-primary: #c58177;
+  --color-primary-dark: #9e5d52;
+  --color-primary-light: #e8c4bb;
+  --color-secondary: #2f4157;
+  --color-secondary-dark: #22303f;
+  --color-secondary-light: #5b7086;
+  --color-bg: #f6f4f2;
+  --color-surface: #ffffff;
+  --color-text: #1f2933;
+  --color-text-secondary: #5f6b76;
+  --color-border: #e3dedb;
+  --color-success: #2e7d32;
+  --color-warning: #ed6c02;
+  --color-error: #d32f2f;
+  --color-info: #0288d1;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+
+  --shadow-sm: 0 1px 3px rgba(16, 24, 32, 0.08);
+  --shadow-md: 0 4px 12px rgba(16, 24, 32, 0.1);
+
+  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}

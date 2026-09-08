@@ -1,0 +1,1243 @@
+📨 contactRoutes loaded
+(node:16368) [MONGODB DRIVER] Warning: useNewUrlParser is a deprecated option: useNewUrlParser has no effect since Node.js Driver version 4.0.0 and will be removed in the next major version
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:16368) [MONGODB DRIVER] Warning: useUnifiedTopology is a deprecated option: useUnifiedTopology has no effect since Node.js Driver version 4.0.0 and will be removed in the next major version
+Server is running on port 5000
+✅ Connected to MongoDB
+Database connected
+Database synchronized
+SyntaxError: Expected property name or '}' in JSON at position 1 (line 1 column 2)
+    at JSON.parse (<anonymous>)
+    at parse (C:\Users\sara\Desktop\lab2\backend\node_modules\body-parser\lib\types\json.js:77:19)
+    at C:\Users\sara\Desktop\lab2\backend\node_modules\body-parser\lib\read.js:123:18
+    at AsyncResource.runInAsyncScope (node:async_hooks:227:14)
+    at invokeCallback (C:\Users\sara\Desktop\lab2\backend\node_modules\raw-body\index.js:238:16)
+    at done (C:\Users\sara\Desktop\lab2\backend\node_modules\raw-body\index.js:227:7)
+    at IncomingMessage.onEnd (C:\Users\sara\Desktop\lab2\backend\node_modules\raw-body\index.js:287:7)
+    at IncomingMessage.emit (node:events:509:28)
+    at endReadableNT (node:internal/streams/readable:1735:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+Error sending email: Error: Missing credentials for "PLAIN"
+    at SMTPConnection._formatError (C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-connection\index.js:809:19)
+    at SMTPConnection.login (C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-connection\index.js:454:38)
+    at C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-transport\index.js:272:32
+    at SMTPConnection.<anonymous> (C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-connection\index.js:215:17)
+    at Object.onceWrapper (node:events:630:28)
+    at SMTPConnection.emit (node:events:509:28)
+    at SMTPConnection._actionEHLO (C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-connection\index.js:1371:14)
+    at SMTPConnection._processResponse (C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-connection\index.js:993:20)
+    at SMTPConnection._onData (C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-connection\index.js:774:14)
+    at SMTPConnection._onSocketData (C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-connection\index.js:195:44) {
+  code: 'EAUTH',
+  command: 'API'
+}
+Error sending email: Error: Missing credentials for "PLAIN"
+    at SMTPConnection._formatError (C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-connection\index.js:809:19)
+    at SMTPConnection.login (C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-connection\index.js:454:38)
+    at C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-transport\index.js:272:32
+    at SMTPConnection.<anonymous> (C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-connection\index.js:215:17)
+    at Object.onceWrapper (node:events:630:28)
+    at SMTPConnection.emit (node:events:509:28)
+    at SMTPConnection._actionEHLO (C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-connection\index.js:1371:14)
+    at SMTPConnection._processResponse (C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-connection\index.js:993:20)
+    at SMTPConnection._onData (C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-connection\index.js:774:14)
+    at SMTPConnection._onSocketData (C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-connection\index.js:195:44) {
+  code: 'EAUTH',
+  command: 'API'
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjA2MTAsImV4cCI6MTc4ODg2MTUxMH0.vfV8ZhQ4Zc1jA-yr-x9dEBi7ppcaso5o7J1s_uES58Y
+Decoded JWT: undefined
+📩 /confirm-email called with body: { userId: '63' }
+📧 Sending email to anesa@gmail.com with total $14.24
+Error sending email: Error: Missing credentials for "PLAIN"
+    at SMTPConnection._formatError (C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-connection\index.js:809:19)
+    at SMTPConnection.login (C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-connection\index.js:454:38)
+    at C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-transport\index.js:272:32
+    at SMTPConnection.<anonymous> (C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-connection\index.js:215:17)
+    at Object.onceWrapper (node:events:630:28)
+    at SMTPConnection.emit (node:events:509:28)
+    at SMTPConnection._actionEHLO (C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-connection\index.js:1371:14)
+    at SMTPConnection._processResponse (C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-connection\index.js:993:20)
+    at SMTPConnection._onData (C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-connection\index.js:774:14)
+    at SMTPConnection._onSocketData (C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-connection\index.js:195:44) {
+  code: 'EAUTH',
+  command: 'API'
+}
+✅ Email sent successfully
+🗑️ Cart cleared for userId: 63
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjA2MTAsImV4cCI6MTc4ODg2MTUxMH0.vfV8ZhQ4Zc1jA-yr-x9dEBi7ppcaso5o7J1s_uES58Y
+Decoded JWT: undefined
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjA2MTAsImV4cCI6MTc4ODg2MTUxMH0.vfV8ZhQ4Zc1jA-yr-x9dEBi7ppcaso5o7J1s_uES58Y
+Decoded JWT: undefined
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjA2MTAsImV4cCI6MTc4ODg2MTUxMH0.vfV8ZhQ4Zc1jA-yr-x9dEBi7ppcaso5o7J1s_uES58Y
+Decoded JWT: undefined
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjA2MTAsImV4cCI6MTc4ODg2MTUxMH0.vfV8ZhQ4Zc1jA-yr-x9dEBi7ppcaso5o7J1s_uES58Y
+Decoded JWT: undefined
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjA2MTAsImV4cCI6MTc4ODg2MTUxMH0.vfV8ZhQ4Zc1jA-yr-x9dEBi7ppcaso5o7J1s_uES58Y
+Decoded JWT: undefined
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjA2MTAsImV4cCI6MTc4ODg2MTUxMH0.vfV8ZhQ4Zc1jA-yr-x9dEBi7ppcaso5o7J1s_uES58Y
+Decoded JWT: undefined
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjA2MTAsImV4cCI6MTc4ODg2MTUxMH0.vfV8ZhQ4Zc1jA-yr-x9dEBi7ppcaso5o7J1s_uES58Y
+Decoded JWT: undefined
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjA2MTAsImV4cCI6MTc4ODg2MTUxMH0.vfV8ZhQ4Zc1jA-yr-x9dEBi7ppcaso5o7J1s_uES58Y
+Decoded JWT: undefined
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjA2MTAsImV4cCI6MTc4ODg2MTUxMH0.vfV8ZhQ4Zc1jA-yr-x9dEBi7ppcaso5o7J1s_uES58Y
+Decoded JWT: undefined
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjA2MTAsImV4cCI6MTc4ODg2MTUxMH0.vfV8ZhQ4Zc1jA-yr-x9dEBi7ppcaso5o7J1s_uES58Y
+Decoded JWT: undefined
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjA2MTAsImV4cCI6MTc4ODg2MTUxMH0.vfV8ZhQ4Zc1jA-yr-x9dEBi7ppcaso5o7J1s_uES58Y
+Decoded JWT: undefined
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjA2MTAsImV4cCI6MTc4ODg2MTUxMH0.vfV8ZhQ4Zc1jA-yr-x9dEBi7ppcaso5o7J1s_uES58Y
+Decoded JWT: undefined
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjA2MTAsImV4cCI6MTc4ODg2MTUxMH0.vfV8ZhQ4Zc1jA-yr-x9dEBi7ppcaso5o7J1s_uES58Y
+Decoded JWT: undefined
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjA2MTAsImV4cCI6MTc4ODg2MTUxMH0.vfV8ZhQ4Zc1jA-yr-x9dEBi7ppcaso5o7J1s_uES58Y
+Decoded JWT: undefined
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjA2MTAsImV4cCI6MTc4ODg2MTUxMH0.vfV8ZhQ4Zc1jA-yr-x9dEBi7ppcaso5o7J1s_uES58Y
+Decoded JWT: undefined
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjA2MTAsImV4cCI6MTc4ODg2MTUxMH0.vfV8ZhQ4Zc1jA-yr-x9dEBi7ppcaso5o7J1s_uES58Y
+Decoded JWT: undefined
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjA2MTAsImV4cCI6MTc4ODg2MTUxMH0.vfV8ZhQ4Zc1jA-yr-x9dEBi7ppcaso5o7J1s_uES58Y
+Decoded JWT: undefined
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjA2MTAsImV4cCI6MTc4ODg2MTUxMH0.vfV8ZhQ4Zc1jA-yr-x9dEBi7ppcaso5o7J1s_uES58Y
+Decoded JWT: undefined
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjA2MTAsImV4cCI6MTc4ODg2MTUxMH0.vfV8ZhQ4Zc1jA-yr-x9dEBi7ppcaso5o7J1s_uES58Y
+Decoded JWT: undefined
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjA2MTAsImV4cCI6MTc4ODg2MTUxMH0.vfV8ZhQ4Zc1jA-yr-x9dEBi7ppcaso5o7J1s_uES58Y
+Decoded JWT: undefined
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjA2MTAsImV4cCI6MTc4ODg2MTUxMH0.vfV8ZhQ4Zc1jA-yr-x9dEBi7ppcaso5o7J1s_uES58Y
+Decoded JWT: undefined
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjA2MTAsImV4cCI6MTc4ODg2MTUxMH0.vfV8ZhQ4Zc1jA-yr-x9dEBi7ppcaso5o7J1s_uES58Y
+Decoded JWT: undefined
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjA2MTAsImV4cCI6MTc4ODg2MTUxMH0.vfV8ZhQ4Zc1jA-yr-x9dEBi7ppcaso5o7J1s_uES58Y
+Decoded JWT: undefined
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjA2MTAsImV4cCI6MTc4ODg2MTUxMH0.vfV8ZhQ4Zc1jA-yr-x9dEBi7ppcaso5o7J1s_uES58Y
+Decoded JWT: undefined
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjA2MTAsImV4cCI6MTc4ODg2MTUxMH0.vfV8ZhQ4Zc1jA-yr-x9dEBi7ppcaso5o7J1s_uES58Y
+Decoded JWT: undefined
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjA2MTAsImV4cCI6MTc4ODg2MTUxMH0.vfV8ZhQ4Zc1jA-yr-x9dEBi7ppcaso5o7J1s_uES58Y
+Decoded JWT: undefined
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjA2MTAsImV4cCI6MTc4ODg2MTUxMH0.vfV8ZhQ4Zc1jA-yr-x9dEBi7ppcaso5o7J1s_uES58Y
+Decoded JWT: undefined
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjA2MTAsImV4cCI6MTc4ODg2MTUxMH0.vfV8ZhQ4Zc1jA-yr-x9dEBi7ppcaso5o7J1s_uES58Y
+Decoded JWT: undefined
+Received body: { email: 'anesa@gmail.com', password: 'Password123!' }
+Logging in with email: anesa@gmail.com
+Password match: true
+Access Token Secret: 1a2b3c4d5e6f7089ab7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8d7e6f5a
+Refresh Token Secret: 9f8e7d6c5b4a392817f6e5d4c3b2a1908f7e6d5c4b3a291807f6e5d4c3b2a190
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjI1NDIsImV4cCI6MTc4ODg2MzQ0Mn0._Ej7F95FEpqr-A1USYz0r3CGnctnMBzpZBuEVqNup6Y
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788862542,
+  exp: 1788863442
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjI1NDIsImV4cCI6MTc4ODg2MzQ0Mn0._Ej7F95FEpqr-A1USYz0r3CGnctnMBzpZBuEVqNup6Y
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788862542,
+  exp: 1788863442
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjI1NDIsImV4cCI6MTc4ODg2MzQ0Mn0._Ej7F95FEpqr-A1USYz0r3CGnctnMBzpZBuEVqNup6Y
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788862542,
+  exp: 1788863442
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjI1NDIsImV4cCI6MTc4ODg2MzQ0Mn0._Ej7F95FEpqr-A1USYz0r3CGnctnMBzpZBuEVqNup6Y
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788862542,
+  exp: 1788863442
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjI1NDIsImV4cCI6MTc4ODg2MzQ0Mn0._Ej7F95FEpqr-A1USYz0r3CGnctnMBzpZBuEVqNup6Y
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788862542,
+  exp: 1788863442
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjI1NDIsImV4cCI6MTc4ODg2MzQ0Mn0._Ej7F95FEpqr-A1USYz0r3CGnctnMBzpZBuEVqNup6Y
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788862542,
+  exp: 1788863442
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjI1NDIsImV4cCI6MTc4ODg2MzQ0Mn0._Ej7F95FEpqr-A1USYz0r3CGnctnMBzpZBuEVqNup6Y
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788862542,
+  exp: 1788863442
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjI1NDIsImV4cCI6MTc4ODg2MzQ0Mn0._Ej7F95FEpqr-A1USYz0r3CGnctnMBzpZBuEVqNup6Y
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788862542,
+  exp: 1788863442
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjI1NDIsImV4cCI6MTc4ODg2MzQ0Mn0._Ej7F95FEpqr-A1USYz0r3CGnctnMBzpZBuEVqNup6Y
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788862542,
+  exp: 1788863442
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjI1NDIsImV4cCI6MTc4ODg2MzQ0Mn0._Ej7F95FEpqr-A1USYz0r3CGnctnMBzpZBuEVqNup6Y
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788862542,
+  exp: 1788863442
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjI1NDIsImV4cCI6MTc4ODg2MzQ0Mn0._Ej7F95FEpqr-A1USYz0r3CGnctnMBzpZBuEVqNup6Y
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788862542,
+  exp: 1788863442
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjI1NDIsImV4cCI6MTc4ODg2MzQ0Mn0._Ej7F95FEpqr-A1USYz0r3CGnctnMBzpZBuEVqNup6Y
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788862542,
+  exp: 1788863442
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjI1NDIsImV4cCI6MTc4ODg2MzQ0Mn0._Ej7F95FEpqr-A1USYz0r3CGnctnMBzpZBuEVqNup6Y
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788862542,
+  exp: 1788863442
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjI1NDIsImV4cCI6MTc4ODg2MzQ0Mn0._Ej7F95FEpqr-A1USYz0r3CGnctnMBzpZBuEVqNup6Y
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788862542,
+  exp: 1788863442
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjI1NDIsImV4cCI6MTc4ODg2MzQ0Mn0._Ej7F95FEpqr-A1USYz0r3CGnctnMBzpZBuEVqNup6Y
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788862542,
+  exp: 1788863442
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjI1NDIsImV4cCI6MTc4ODg2MzQ0Mn0._Ej7F95FEpqr-A1USYz0r3CGnctnMBzpZBuEVqNup6Y
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788862542,
+  exp: 1788863442
+}
+Received body: { email: 'admin@pawtopia.local', password: 'Adminb655d86e!A1' }
+Logging in with email: admin@pawtopia.local
+Password match: true
+Access Token Secret: 1a2b3c4d5e6f7089ab7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8d7e6f5a
+Refresh Token Secret: 9f8e7d6c5b4a392817f6e5d4c3b2a1908f7e6d5c4b3a291807f6e5d4c3b2a190
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjQsInJvbGUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AcGF3dG9waWEubG9jYWwiLCJpYXQiOjE3ODg4NjI1NzMsImV4cCI6MTc4ODg2MzQ3M30.0HgoHQk8Zk685ncKJlZF0qlpLJxvrxSYMg-JFUwxhV0
+Decoded JWT: {
+  id: 64,
+  role: 'admin',
+  email: 'admin@pawtopia.local',
+  iat: 1788862573,
+  exp: 1788863473
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjQsInJvbGUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AcGF3dG9waWEubG9jYWwiLCJpYXQiOjE3ODg4NjI1NzMsImV4cCI6MTc4ODg2MzQ3M30.0HgoHQk8Zk685ncKJlZF0qlpLJxvrxSYMg-JFUwxhV0
+Decoded JWT: {
+  id: 64,
+  role: 'admin',
+  email: 'admin@pawtopia.local',
+  iat: 1788862573,
+  exp: 1788863473
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjQsInJvbGUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AcGF3dG9waWEubG9jYWwiLCJpYXQiOjE3ODg4NjI1NzMsImV4cCI6MTc4ODg2MzQ3M30.0HgoHQk8Zk685ncKJlZF0qlpLJxvrxSYMg-JFUwxhV0
+Decoded JWT: {
+  id: 64,
+  role: 'admin',
+  email: 'admin@pawtopia.local',
+  iat: 1788862573,
+  exp: 1788863473
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjQsInJvbGUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AcGF3dG9waWEubG9jYWwiLCJpYXQiOjE3ODg4NjI1NzMsImV4cCI6MTc4ODg2MzQ3M30.0HgoHQk8Zk685ncKJlZF0qlpLJxvrxSYMg-JFUwxhV0
+Decoded JWT: {
+  id: 64,
+  role: 'admin',
+  email: 'admin@pawtopia.local',
+  iat: 1788862573,
+  exp: 1788863473
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjQsInJvbGUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AcGF3dG9waWEubG9jYWwiLCJpYXQiOjE3ODg4NjI1NzMsImV4cCI6MTc4ODg2MzQ3M30.0HgoHQk8Zk685ncKJlZF0qlpLJxvrxSYMg-JFUwxhV0
+Decoded JWT: {
+  id: 64,
+  role: 'admin',
+  email: 'admin@pawtopia.local',
+  iat: 1788862573,
+  exp: 1788863473
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjQsInJvbGUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AcGF3dG9waWEubG9jYWwiLCJpYXQiOjE3ODg4NjI1NzMsImV4cCI6MTc4ODg2MzQ3M30.0HgoHQk8Zk685ncKJlZF0qlpLJxvrxSYMg-JFUwxhV0
+Decoded JWT: {
+  id: 64,
+  role: 'admin',
+  email: 'admin@pawtopia.local',
+  iat: 1788862573,
+  exp: 1788863473
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjQsInJvbGUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AcGF3dG9waWEubG9jYWwiLCJpYXQiOjE3ODg4NjI1NzMsImV4cCI6MTc4ODg2MzQ3M30.0HgoHQk8Zk685ncKJlZF0qlpLJxvrxSYMg-JFUwxhV0
+Decoded JWT: {
+  id: 64,
+  role: 'admin',
+  email: 'admin@pawtopia.local',
+  iat: 1788862573,
+  exp: 1788863473
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjQsInJvbGUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AcGF3dG9waWEubG9jYWwiLCJpYXQiOjE3ODg4NjI1NzMsImV4cCI6MTc4ODg2MzQ3M30.0HgoHQk8Zk685ncKJlZF0qlpLJxvrxSYMg-JFUwxhV0
+Decoded JWT: {
+  id: 64,
+  role: 'admin',
+  email: 'admin@pawtopia.local',
+  iat: 1788862573,
+  exp: 1788863473
+}
+Received body: { email: 'anesa@gmail.com', password: 'Password123!' }
+Logging in with email: anesa@gmail.com
+Password match: true
+Access Token Secret: 1a2b3c4d5e6f7089ab7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8d7e6f5a
+Refresh Token Secret: 9f8e7d6c5b4a392817f6e5d4c3b2a1908f7e6d5c4b3a291807f6e5d4c3b2a190
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjI2ODEsImV4cCI6MTc4ODg2MzU4MX0.6HvCIaGLGyEtN58TsYtlXzIAk4Ik74j1BTWhgmBMFE0
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788862681,
+  exp: 1788863581
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjI2ODEsImV4cCI6MTc4ODg2MzU4MX0.6HvCIaGLGyEtN58TsYtlXzIAk4Ik74j1BTWhgmBMFE0
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788862681,
+  exp: 1788863581
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjI2ODEsImV4cCI6MTc4ODg2MzU4MX0.6HvCIaGLGyEtN58TsYtlXzIAk4Ik74j1BTWhgmBMFE0
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788862681,
+  exp: 1788863581
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjI2ODEsImV4cCI6MTc4ODg2MzU4MX0.6HvCIaGLGyEtN58TsYtlXzIAk4Ik74j1BTWhgmBMFE0
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788862681,
+  exp: 1788863581
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjI2ODEsImV4cCI6MTc4ODg2MzU4MX0.6HvCIaGLGyEtN58TsYtlXzIAk4Ik74j1BTWhgmBMFE0
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788862681,
+  exp: 1788863581
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjI2ODEsImV4cCI6MTc4ODg2MzU4MX0.6HvCIaGLGyEtN58TsYtlXzIAk4Ik74j1BTWhgmBMFE0
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788862681,
+  exp: 1788863581
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjI2ODEsImV4cCI6MTc4ODg2MzU4MX0.6HvCIaGLGyEtN58TsYtlXzIAk4Ik74j1BTWhgmBMFE0
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788862681,
+  exp: 1788863581
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjI2ODEsImV4cCI6MTc4ODg2MzU4MX0.6HvCIaGLGyEtN58TsYtlXzIAk4Ik74j1BTWhgmBMFE0
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788862681,
+  exp: 1788863581
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjI2ODEsImV4cCI6MTc4ODg2MzU4MX0.6HvCIaGLGyEtN58TsYtlXzIAk4Ik74j1BTWhgmBMFE0
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788862681,
+  exp: 1788863581
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjI2ODEsImV4cCI6MTc4ODg2MzU4MX0.6HvCIaGLGyEtN58TsYtlXzIAk4Ik74j1BTWhgmBMFE0
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788862681,
+  exp: 1788863581
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjI2ODEsImV4cCI6MTc4ODg2MzU4MX0.6HvCIaGLGyEtN58TsYtlXzIAk4Ik74j1BTWhgmBMFE0
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788862681,
+  exp: 1788863581
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjI2ODEsImV4cCI6MTc4ODg2MzU4MX0.6HvCIaGLGyEtN58TsYtlXzIAk4Ik74j1BTWhgmBMFE0
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788862681,
+  exp: 1788863581
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjI2ODEsImV4cCI6MTc4ODg2MzU4MX0.6HvCIaGLGyEtN58TsYtlXzIAk4Ik74j1BTWhgmBMFE0
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788862681,
+  exp: 1788863581
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjI2ODEsImV4cCI6MTc4ODg2MzU4MX0.6HvCIaGLGyEtN58TsYtlXzIAk4Ik74j1BTWhgmBMFE0
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788862681,
+  exp: 1788863581
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjI2ODEsImV4cCI6MTc4ODg2MzU4MX0.6HvCIaGLGyEtN58TsYtlXzIAk4Ik74j1BTWhgmBMFE0
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788862681,
+  exp: 1788863581
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjI2ODEsImV4cCI6MTc4ODg2MzU4MX0.6HvCIaGLGyEtN58TsYtlXzIAk4Ik74j1BTWhgmBMFE0
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788862681,
+  exp: 1788863581
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjI2ODEsImV4cCI6MTc4ODg2MzU4MX0.6HvCIaGLGyEtN58TsYtlXzIAk4Ik74j1BTWhgmBMFE0
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788862681,
+  exp: 1788863581
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjI2ODEsImV4cCI6MTc4ODg2MzU4MX0.6HvCIaGLGyEtN58TsYtlXzIAk4Ik74j1BTWhgmBMFE0
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788862681,
+  exp: 1788863581
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjI2ODEsImV4cCI6MTc4ODg2MzU4MX0.6HvCIaGLGyEtN58TsYtlXzIAk4Ik74j1BTWhgmBMFE0
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788862681,
+  exp: 1788863581
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjI2ODEsImV4cCI6MTc4ODg2MzU4MX0.6HvCIaGLGyEtN58TsYtlXzIAk4Ik74j1BTWhgmBMFE0
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788862681,
+  exp: 1788863581
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjI2ODEsImV4cCI6MTc4ODg2MzU4MX0.6HvCIaGLGyEtN58TsYtlXzIAk4Ik74j1BTWhgmBMFE0
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788862681,
+  exp: 1788863581
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjI2ODEsImV4cCI6MTc4ODg2MzU4MX0.6HvCIaGLGyEtN58TsYtlXzIAk4Ik74j1BTWhgmBMFE0
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788862681,
+  exp: 1788863581
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjI2ODEsImV4cCI6MTc4ODg2MzU4MX0.6HvCIaGLGyEtN58TsYtlXzIAk4Ik74j1BTWhgmBMFE0
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788862681,
+  exp: 1788863581
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjI2ODEsImV4cCI6MTc4ODg2MzU4MX0.6HvCIaGLGyEtN58TsYtlXzIAk4Ik74j1BTWhgmBMFE0
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788862681,
+  exp: 1788863581
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjI2ODEsImV4cCI6MTc4ODg2MzU4MX0.6HvCIaGLGyEtN58TsYtlXzIAk4Ik74j1BTWhgmBMFE0
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788862681,
+  exp: 1788863581
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjI2ODEsImV4cCI6MTc4ODg2MzU4MX0.6HvCIaGLGyEtN58TsYtlXzIAk4Ik74j1BTWhgmBMFE0
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788862681,
+  exp: 1788863581
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjI2ODEsImV4cCI6MTc4ODg2MzU4MX0.6HvCIaGLGyEtN58TsYtlXzIAk4Ik74j1BTWhgmBMFE0
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788862681,
+  exp: 1788863581
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjI2ODEsImV4cCI6MTc4ODg2MzU4MX0.6HvCIaGLGyEtN58TsYtlXzIAk4Ik74j1BTWhgmBMFE0
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788862681,
+  exp: 1788863581
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjI2ODEsImV4cCI6MTc4ODg2MzU4MX0.6HvCIaGLGyEtN58TsYtlXzIAk4Ik74j1BTWhgmBMFE0
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788862681,
+  exp: 1788863581
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjI2ODEsImV4cCI6MTc4ODg2MzU4MX0.6HvCIaGLGyEtN58TsYtlXzIAk4Ik74j1BTWhgmBMFE0
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788862681,
+  exp: 1788863581
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjI2ODEsImV4cCI6MTc4ODg2MzU4MX0.6HvCIaGLGyEtN58TsYtlXzIAk4Ik74j1BTWhgmBMFE0
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788862681,
+  exp: 1788863581
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjI2ODEsImV4cCI6MTc4ODg2MzU4MX0.6HvCIaGLGyEtN58TsYtlXzIAk4Ik74j1BTWhgmBMFE0
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788862681,
+  exp: 1788863581
+}
+Error sending email: Error: Missing credentials for "PLAIN"
+    at SMTPConnection._formatError (C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-connection\index.js:809:19)
+    at SMTPConnection.login (C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-connection\index.js:454:38)
+    at C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-transport\index.js:272:32
+    at SMTPConnection.<anonymous> (C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-connection\index.js:215:17)
+    at Object.onceWrapper (node:events:630:28)
+    at SMTPConnection.emit (node:events:509:28)
+    at SMTPConnection._actionEHLO (C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-connection\index.js:1371:14)
+    at SMTPConnection._processResponse (C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-connection\index.js:993:20)
+    at SMTPConnection._onData (C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-connection\index.js:774:14)
+    at SMTPConnection._onSocketData (C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-connection\index.js:195:44) {
+  code: 'EAUTH',
+  command: 'API'
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjI2ODEsImV4cCI6MTc4ODg2MzU4MX0.6HvCIaGLGyEtN58TsYtlXzIAk4Ik74j1BTWhgmBMFE0
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788862681,
+  exp: 1788863581
+}
+Error sending email: Error: Missing credentials for "PLAIN"
+    at SMTPConnection._formatError (C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-connection\index.js:809:19)
+    at SMTPConnection.login (C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-connection\index.js:454:38)
+    at C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-transport\index.js:272:32
+    at SMTPConnection.<anonymous> (C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-connection\index.js:215:17)
+    at Object.onceWrapper (node:events:630:28)
+    at SMTPConnection.emit (node:events:509:28)
+    at SMTPConnection._actionEHLO (C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-connection\index.js:1371:14)
+    at SMTPConnection._processResponse (C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-connection\index.js:993:20)
+    at SMTPConnection._onData (C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-connection\index.js:774:14)
+    at SMTPConnection._onSocketData (C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-connection\index.js:195:44) {
+  code: 'EAUTH',
+  command: 'API'
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjI2ODEsImV4cCI6MTc4ODg2MzU4MX0.6HvCIaGLGyEtN58TsYtlXzIAk4Ik74j1BTWhgmBMFE0
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788862681,
+  exp: 1788863581
+}
+SyntaxError: Expected property name or '}' in JSON at position 1 (line 1 column 2)
+    at JSON.parse (<anonymous>)
+    at parse (C:\Users\sara\Desktop\lab2\backend\node_modules\body-parser\lib\types\json.js:77:19)
+    at C:\Users\sara\Desktop\lab2\backend\node_modules\body-parser\lib\read.js:123:18
+    at AsyncResource.runInAsyncScope (node:async_hooks:227:14)
+    at invokeCallback (C:\Users\sara\Desktop\lab2\backend\node_modules\raw-body\index.js:238:16)
+    at done (C:\Users\sara\Desktop\lab2\backend\node_modules\raw-body\index.js:227:7)
+    at IncomingMessage.onEnd (C:\Users\sara\Desktop\lab2\backend\node_modules\raw-body\index.js:287:7)
+    at IncomingMessage.emit (node:events:509:28)
+    at endReadableNT (node:internal/streams/readable:1735:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+Incoming token: undefined
+Incoming token: undefined
+Received body: { email: 'admin@pawtopia.local', password: 'Adminb655d86e!A1' }
+Logging in with email: admin@pawtopia.local
+Password match: true
+Access Token Secret: 1a2b3c4d5e6f7089ab7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8d7e6f5a
+Refresh Token Secret: 9f8e7d6c5b4a392817f6e5d4c3b2a1908f7e6d5c4b3a291807f6e5d4c3b2a190
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjQsInJvbGUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AcGF3dG9waWEubG9jYWwiLCJpYXQiOjE3ODg4NjI5NTYsImV4cCI6MTc4ODg2Mzg1Nn0.kDkv27hATzMbJDjORbDxohKSL9hvBTEI5ohWyGFIp_o
+Decoded JWT: {
+  id: 64,
+  role: 'admin',
+  email: 'admin@pawtopia.local',
+  iat: 1788862956,
+  exp: 1788863856
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjQsInJvbGUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AcGF3dG9waWEubG9jYWwiLCJpYXQiOjE3ODg4NjI5NTYsImV4cCI6MTc4ODg2Mzg1Nn0.kDkv27hATzMbJDjORbDxohKSL9hvBTEI5ohWyGFIp_o
+Decoded JWT: {
+  id: 64,
+  role: 'admin',
+  email: 'admin@pawtopia.local',
+  iat: 1788862956,
+  exp: 1788863856
+}
+Received body: { email: 'anesa@gmail.com', password: 'Password123!' }
+Logging in with email: anesa@gmail.com
+Password match: true
+Access Token Secret: 1a2b3c4d5e6f7089ab7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8d7e6f5a
+Refresh Token Secret: 9f8e7d6c5b4a392817f6e5d4c3b2a1908f7e6d5c4b3a291807f6e5d4c3b2a190
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Error sending email: Error: Missing credentials for "PLAIN"
+    at SMTPConnection._formatError (C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-connection\index.js:809:19)
+    at SMTPConnection.login (C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-connection\index.js:454:38)
+    at C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-transport\index.js:272:32
+    at SMTPConnection.<anonymous> (C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-connection\index.js:215:17)
+    at Object.onceWrapper (node:events:630:28)
+    at SMTPConnection.emit (node:events:509:28)
+    at SMTPConnection._actionEHLO (C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-connection\index.js:1371:14)
+    at SMTPConnection._processResponse (C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-connection\index.js:993:20)
+    at SMTPConnection._onData (C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-connection\index.js:774:14)
+    at SMTPConnection._onSocketData (C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-connection\index.js:195:44) {
+  code: 'EAUTH',
+  command: 'API'
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Error sending email: Error: Missing credentials for "PLAIN"
+    at SMTPConnection._formatError (C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-connection\index.js:809:19)
+    at SMTPConnection.login (C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-connection\index.js:454:38)
+    at C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-transport\index.js:272:32
+    at SMTPConnection.<anonymous> (C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-connection\index.js:215:17)
+    at Object.onceWrapper (node:events:630:28)
+    at SMTPConnection.emit (node:events:509:28)
+    at SMTPConnection._actionEHLO (C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-connection\index.js:1371:14)
+    at SMTPConnection._processResponse (C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-connection\index.js:993:20)
+    at SMTPConnection._onData (C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-connection\index.js:774:14)
+    at SMTPConnection._onSocketData (C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-connection\index.js:195:44) {
+  code: 'EAUTH',
+  command: 'API'
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+Incoming token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjMsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJhbmVzYUBnbWFpbC5jb20iLCJpYXQiOjE3ODg4NjQ0MzMsImV4cCI6MTc4ODg2NTMzM30.ca5aFw4TulBp4rJBV9r7OcPpY2x42LyV85Zh09Z_Pho
+Decoded JWT: {
+  id: 63,
+  role: 'user',
+  email: 'anesa@gmail.com',
+  iat: 1788864433,
+  exp: 1788865333
+}
+📩 /confirm-email called with body: { userId: 64 }
+📧 Sending email to admin@pawtopia.local with total $22.49
+Error sending email: Error: Missing credentials for "PLAIN"
+    at SMTPConnection._formatError (C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-connection\index.js:809:19)
+    at SMTPConnection.login (C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-connection\index.js:454:38)
+    at C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-transport\index.js:272:32
+    at SMTPConnection.<anonymous> (C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-connection\index.js:215:17)
+    at Object.onceWrapper (node:events:630:28)
+    at SMTPConnection.emit (node:events:509:28)
+    at SMTPConnection._actionEHLO (C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-connection\index.js:1371:14)
+    at SMTPConnection._processResponse (C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-connection\index.js:993:20)
+    at SMTPConnection._onData (C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-connection\index.js:774:14)
+    at SMTPConnection._onSocketData (C:\Users\sara\Desktop\lab2\backend\node_modules\nodemailer\lib\smtp-connection\index.js:195:44) {
+  code: 'EAUTH',
+  command: 'API'
+}
+✅ Email sent successfully
+🗑️ Cart cleared for userId: 64

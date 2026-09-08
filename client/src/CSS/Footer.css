@@ -1,0 +1,126 @@
+/* src/CSS/Footer.css */
+
+.footer {
+  background-color: var(--color-primary-dark);
+  color: #fff;
+  padding: 3rem 2rem 2rem;
+  user-select: none;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.footer-logo {
+  flex: 1 1 250px;
+  text-align: center;
+}
+
+.footer-logo-icon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 0.5rem;
+  filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.3));
+}
+
+.footer-logo h2 {
+  margin-bottom: 0.3rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.footer-logo p {
+  font-weight: 400;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.footer-links,
+.footer-contact,
+.footer-social {
+  flex: 1 1 180px;
+}
+
+.footer-links h3,
+.footer-contact h3,
+.footer-social h3 {
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  border-bottom: 2px solid #fff;
+  display: inline-block;
+  padding-bottom: 0.3rem;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links ul li {
+  margin-bottom: 0.7rem;
+}
+
+.footer-links ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.footer-links ul li a:hover {
+  color: var(--color-primary-light);
+  text-decoration: underline;
+}
+
+.footer-contact p {
+  margin: 0.3rem 0;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.footer-social .social-icons {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-icon {
+  display: inline-block;
+  font-size: 1.8rem;
+  padding: 0.3rem 0.5rem;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.15);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+  user-select: none;
+  text-align: center;
+}
+
+.social-icon:hover {
+  background-color: #fff;
+  color: var(--color-primary);
+  transform: scale(1.1);
+}
+
+.footer-separator {
+  margin: 2rem 0 1rem;
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.footer-bottom {
+  text-align: center;
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.85);
+  user-select: none;
+}

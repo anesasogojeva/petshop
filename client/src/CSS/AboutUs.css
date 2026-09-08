@@ -1,0 +1,304 @@
+.about-us-container {
+  background-color: var(--color-bg);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.section-title,
+.section-titles {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: var(--color-text);
+  display: flex;
+  justify-content: center;
+}
+
+.about-intro {
+  font-size: 1.1rem;
+  max-width: 800px;
+  margin: 0 auto 30px;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.about-video {
+  margin-bottom: 40px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Mission / Vision / Services and Our Team & Staff cards */
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem 1rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  width: 300px;
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.card img {
+  max-width: 100%;
+  height: 160px;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  border-radius: var(--radius-sm);
+}
+
+.card h3 {
+  font-size: 1.15rem;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+}
+
+.card p {
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 1rem;
+}
+
+.card button {
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.card button:hover {
+  background-color: var(--color-primary-dark);
+}
+
+/* Testimonials */
+.testimonials {
+  background-color: var(--color-primary-light);
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.testimonial-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.testimonial-card {
+  background-color: var(--color-surface);
+  padding: 25px;
+  width: calc(50% - 30px);
+  border-radius: var(--radius-md);
+  font-style: italic;
+  box-shadow: var(--shadow-sm);
+}
+
+.testimonial-card h4 {
+  margin-top: 10px;
+  font-style: normal;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+}
+
+@media (max-width: 768px) {
+  .testimonial-card {
+    width: 100%;
+  }
+}
+
+/* Fun Facts */
+.fun-facts {
+  background-color: var(--color-bg);
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.facts-grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.fact-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  padding: 30px;
+  width: 150px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.fact-card h3 {
+  font-size: 1.75rem;
+  color: var(--color-primary);
+  margin-bottom: 5px;
+}
+
+/* Community Section */
+.community {
+  background-color: var(--color-surface);
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.community p {
+  max-width: 700px;
+  margin: 0 auto 20px;
+  font-size: 1.05rem;
+  color: var(--color-text-secondary);
+}
+
+.community button {
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.community button:hover {
+  background-color: var(--color-primary-dark);
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: var(--color-surface);
+  padding: 2rem;
+  border-radius: var(--radius-md);
+  max-width: 400px;
+  text-align: center;
+  box-shadow: var(--shadow-md);
+  position: relative;
+}
+
+.close-modal-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.close-modal-btn:hover {
+  background: var(--color-primary-dark);
+}
+
+.login-prompt-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.login-prompt-message {
+  position: relative;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 28px 30px;
+  max-width: 400px;
+  text-align: center;
+  color: var(--color-text);
+  box-shadow: var(--shadow-md);
+}
+
+.login-prompt-message p {
+  margin-bottom: 20px;
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+.login-prompt-message .login-btn,
+.login-prompt-message .signup-btn {
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-weight: 600;
+  margin: 0 8px;
+  transition: background-color 0.2s ease;
+}
+
+.login-prompt-message .signup-btn {
+  background-color: var(--color-secondary);
+}
+
+.login-prompt-message .login-btn:hover {
+  background-color: var(--color-primary-dark);
+}
+
+.login-prompt-message .signup-btn:hover {
+  background-color: var(--color-secondary-dark);
+}
+
+.login-prompt-message .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  font-size: 22px;
+  font-weight: bold;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+  transition: color 0.2s ease;
+}
+
+.login-prompt-message .close-btn:hover {
+  color: var(--color-text);
+}

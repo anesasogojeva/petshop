@@ -1,0 +1,357 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+*{
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+}
+
+html{
+  font-size: 10px;
+}
+
+body{
+  font-family: "Poppins", sans-serif;
+  height: 100vh;
+
+}
+
+.login-main{
+  display: flex;
+}
+
+.login-left{
+  flex-grow: 1;
+  height: 100vh;
+  background-color: #f3e8e2;
+
+  
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-left img{
+  width: 400px;
+}
+
+.login-right{
+
+  height: 100vh;
+
+  flex-grow: 1;
+
+
+}
+
+.login-right-container{
+  height: 100%;
+  width: 80%;
+  margin: 0 auto;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+
+.login-right form{
+  display: flex;
+  flex-direction: column;
+}
+
+.login-logo{
+  align-self: center;
+  padding-top: 50px;
+}
+
+.login-center{
+  margin: auto 0;
+}
+
+.login-logo img{
+  width: 50px;
+}
+
+.login-center h2{
+  font-size: 3.5rem;
+}
+
+.login-center{
+  text-align: center;
+}
+
+.login-center p{
+  font-weight: 400;
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
+
+form input[type='email'],
+form input[type='password'],
+form input[type='text']
+ {
+  width: 100%;
+  padding: 16px;
+  margin-bottom: 16px;
+  border: 0px;
+  border-bottom: 1px solid black;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.pass-input-div{
+  position: relative;
+}
+
+.pass-input-div svg{
+  font-size: 20px;
+  position: absolute;
+  right: 10px;
+  bottom: 35px;
+  cursor: pointer;
+  outline: none;
+}
+
+form button[type='button'] {
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 30px;
+  font-weight: 600;
+}
+
+
+.login-center-options{
+  display: flex;
+  justify-content: space-between;
+}
+
+.remember-div{
+  display:flex;
+  align-items: center;
+  column-gap: 5px;
+}
+
+.remember-div label{
+  font-size: 1.3rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 2px;
+}
+
+.forgot-pass-link{
+  text-decoration: none;
+  font-size: 1.3rem;
+}
+
+.forgot-pass-link:hover{
+  text-decoration: underline;
+}
+
+.login-center-buttons{
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.login-center-buttons button:nth-child(1){
+  padding-top:10px ;
+  padding-bottom: 10px;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+  border: 3px solid black;
+}
+
+.login-center-buttons button:nth-child(1):hover{
+  color: #333;
+  background-color: #f3e8e2;
+}
+
+.login-center-buttons button:nth-child(2){
+  background-color: #F0F0F0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.login-center-buttons button:nth-child(2) img{
+  width: 30px;
+}
+
+.login-center-buttons button:nth-child(2):hover{
+  background-color: #c4c4c457;
+}
+
+.login-bottom-p{
+  text-align: center;
+  font-size: 1.5rem;
+  padding-bottom: 40px;
+}
+
+.login-bottom-p a{
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.login-bottom-p a:hover{
+  text-decoration: underline;
+}
+/* New additions for registration */
+.register-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.register-form {
+  width: 60%;
+  max-width: 500px;
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.register-form h2 {
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.register-form input,
+.register-form select {
+  width: 100%;
+  padding: 16px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.register-form button {
+  width: 100%;
+  padding: 16px;
+  background-color: black;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.register-form button:hover {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+}
+
+.register-form .role-select {
+  width: 100%;
+  padding: 16px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.register-form p {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-top: 20px;
+}
+
+.register-form p a {
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.register-form p a:hover {
+  text-decoration: underline;
+}
+.forgot-password-form input {
+  width: 100%;
+  padding: 0.6rem;
+  margin-top: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.forgot-password-form button {
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: #4c8bf5;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.reset-password-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #E9E9E9; /* Same background color as the login-left */
+}
+
+.reset-password-box {
+  background: white;
+  padding: 2rem 2.5rem;
+  border-radius: 8px; /* Slightly more rounded corners to match the rest of the UI */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.reset-password-box h2 {
+  color: #c58177; /* Same blue as the login form */
+  margin-bottom: 0.5rem;
+}
+
+.reset-password-box p {
+  color: #6c757d; /* Light gray text for instructions */
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+
+.reset-password-form input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc; /* Light gray border to match registration inputs */
+  border-radius: 4px; /* Matching border radius from the registration form */
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.reset-password-form button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #e0a399; /* Same blue button color as login */
+  color: white;
+  border: none;
+  border-radius: 30px; /* Rounded corners like the login form */
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.reset-password-form button:hover {
+  background-color: #c58177; /* Darker shade on hover for consistency */
+}
+
+.reset-message {
+  margin-top: 1rem;
+  color: #dc3545; /* Red color for errors (same as the login form error message) */
+}

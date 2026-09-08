@@ -1,0 +1,118 @@
+.product-list-wrapper {
+  flex: 1;
+  background-color: var(--color-bg);
+  padding: 3rem 2rem;
+}
+
+/* Loading & errors */
+.loading,
+.error-message {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.error-message {
+  color: var(--color-error);
+}
+
+/* Grid */
+.product-list {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.product-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  text-align: center;
+  padding-bottom: 1.5rem;
+  width: 100%;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.product-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+
+/* Text styles */
+.product-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0.75rem 0 0.25rem;
+  color: var(--color-text);
+}
+
+.product-desc {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  padding: 0 1rem;
+  min-height: 48px;
+}
+
+.product-price {
+  font-size: 1rem;
+  margin-top: 0.75rem;
+}
+
+.product-price b {
+  color: var(--color-primary);
+}
+
+.product-discount {
+  color: var(--color-error);
+  font-weight: 600;
+  margin-left: 0.25rem;
+}
+
+/* Sidebar */
+.shop-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 240px;
+  background-color: var(--color-surface);
+  border-right: 1px solid var(--color-border);
+  padding: 2rem 1rem;
+  color: var(--color-text);
+}
+
+.sidebar h3 {
+  margin-bottom: 1rem;
+  color: var(--color-text);
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .shop-layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .product-list {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}

@@ -1,0 +1,164 @@
+.shelters-page {
+  padding: 60px 20px;
+  background-color: var(--color-bg);
+  min-height: 100vh;
+}
+
+.shelters-hero {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.shelters-hero h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.shelters-hero p {
+  font-size: 1.05rem;
+  color: var(--color-text-secondary);
+}
+
+.shelters-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.shelter-card {
+  width: 280px;
+  height: 260px;
+  perspective: 1000px;
+}
+
+.shelter-front,
+.shelter-back {
+  border-radius: var(--radius-md);
+  padding: 20px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  backface-visibility: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  overflow: hidden;
+}
+
+.shelter-front {
+  z-index: 2;
+  transform: rotateY(0deg);
+}
+
+.shelter-back {
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  font-size: 0.85rem;
+}
+
+.shelter-back p {
+  margin: 0 0 6px;
+}
+
+.shelter-card:hover .shelter-front {
+  transform: rotateY(-180deg);
+}
+
+.shelter-card:hover .shelter-back {
+  transform: rotateY(0deg);
+  z-index: 3;
+}
+
+.city {
+  color: var(--color-primary);
+  font-weight: 700;
+  margin-top: 5px;
+}
+
+.shelter-img {
+  width: 90%;
+  height: 100px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  margin-top: 12px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.read-more-btn {
+  margin-top: auto;
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.read-more-btn:hover {
+  background-color: var(--color-primary-dark);
+}
+
+.fun-facts-slider {
+  margin: 4rem auto 0;
+  text-align: center;
+  padding: 1.5rem 2rem 4rem;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  max-width: 900px;
+}
+
+.fun-facts-slider h2 {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+  color: var(--color-text);
+  font-weight: 700;
+}
+
+.fun-facts-slider button {
+  padding: 0.6rem 1.4rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 999px;
+  border: 1px solid var(--color-primary);
+  background: var(--color-surface);
+  color: var(--color-primary);
+  margin: 0 0.4rem;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.fun-facts-slider button:hover {
+  background: var(--color-primary);
+  color: white;
+}
+
+.fun-facts-image {
+  width: 100%;
+  max-width: 640px;
+  height: 320px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  margin: 1.5rem auto 1rem;
+  display: block;
+}
+
+.fun-facts-text {
+  font-size: 1.2rem;
+  margin: 0.5rem auto 1.5rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  max-width: 500px;
+}
+
+.fun-facts-nav {
+  margin-top: 0.5rem;
+}

@@ -1,0 +1,148 @@
+.contact-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.contact-title .highlight {
+  color: var(--color-text);
+}
+
+.contact-title .focus {
+  color: var(--color-primary);
+  border-bottom: 4px solid var(--color-primary);
+  padding-bottom: 0.2rem;
+}
+
+.contact-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 4rem 3rem;
+  background-color: var(--color-bg);
+  min-height: 80vh;
+  gap: 4rem;
+}
+
+.contact-left,
+.contact-right {
+  flex: 1;
+  min-width: 280px;
+  max-width: 600px;
+}
+
+.contact-left h2 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.contact-left input,
+.contact-left textarea,
+.contact-right input {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  margin-bottom: 1.25rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface);
+  font-size: 1rem;
+  font-family: var(--font-family);
+  transition: border-color 0.2s ease;
+}
+
+.contact-left input:focus-visible,
+.contact-left textarea:focus-visible,
+.contact-right input:focus-visible {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-light);
+}
+
+.contact-left textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.contact-left button,
+.contact-right button,
+.signup-link-button {
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  padding: 0.9rem 1.8rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.contact-left button:hover,
+.contact-right button:hover,
+.signup-link-button:hover {
+  background-color: var(--color-primary-dark);
+}
+
+.contact-left button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.form-feedback {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-top: -0.5rem;
+  margin-bottom: 1rem;
+}
+
+.form-feedback.success {
+  color: var(--color-success);
+}
+
+.form-feedback.error {
+  color: var(--color-error);
+}
+
+.contact-right h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.contact-right p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+.signup-link-button {
+  display: inline-block;
+  text-decoration: none;
+  margin-bottom: 1.5rem;
+}
+
+.secondary-link {
+  display: inline-block;
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: none;
+  margin-bottom: 1.5rem;
+}
+
+.secondary-link:hover {
+  text-decoration: underline;
+}
+
+.contact-right strong {
+  display: block;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.contact-right p:last-child {
+  margin-bottom: 0;
+}

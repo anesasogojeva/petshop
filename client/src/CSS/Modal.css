@@ -1,0 +1,38 @@
+    .modal-overlay {
+    position: fixed;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    block-size: 100vh;
+    inline-size: 100vw;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    }
+
+    .modal-content {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    max-inline-size: 500px;
+    inline-size: 90%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    position: relative;
+    }
+
+    .modal-close {
+    position: absolute;
+    inset-block-start: 10px;
+    inset-inline-end: 15px;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    }
+
+    .extra-images {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    }
