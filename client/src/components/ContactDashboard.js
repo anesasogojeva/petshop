@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import {
-  Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper,
-  TablePagination, Snackbar, Alert,
+  Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper,
+  TablePagination, Snackbar, Alert, Typography,
 } from '@mui/material';
 import Sidebar from './Sidebar';
 import DashboardShell from './nav/DashboardShell';
 import TableToolbar from './shared/TableToolbar';
 import EmptyState from './shared/EmptyState';
 import UnauthorizedState from './shared/UnauthorizedState';
+import MobileCardList from './shared/MobileCardList';
 import useTableControls from '../hooks/useTableControls';
 
 const ContactDashboard = () => {
@@ -47,7 +48,28 @@ const ContactDashboard = () => {
         searchPlaceholder="Search by name, email..."
       />
 
-      <TableContainer component={Paper}>
+      <MobileCardList
+        rows={pageRows}
+        emptyTitle="No messages found"
+        emptyDescription="Contact form submissions will show up here."
+        pagination={{
+          count: filteredCount,
+          page,
+          onPageChange: (_, p) => setPage(p),
+          rowsPerPage,
+          onRowsPerPageChange: (e) => setRowsPerPage(Number(e.target.value)),
+          rowsPerPageOptions: [5, 10, 25],
+        }}
+        renderCard={(msg, idx) => (
+          <Paper key={idx} variant="outlined" sx={{ p: 2 }}>
+            <Typography variant="subtitle2">{msg.name}</Typography>
+            <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>{msg.email}</Typography>
+            <Typography variant="body2">{msg.message}</Typography>
+          </Paper>
+        )}
+      />
+
+      <TableContainer component={Paper} sx={{ display: { xs: 'none', sm: 'block' } }}>
         <Table>
           <TableHead>
             <TableRow>

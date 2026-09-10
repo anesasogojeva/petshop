@@ -12,7 +12,10 @@ import {
   Snackbar,
   Alert,
   CircularProgress,
+  IconButton,
+  Tooltip,
 } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
 import { useNavigate } from 'react-router-dom';
 import EmptyState from './shared/EmptyState';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
@@ -156,12 +159,31 @@ const CheckoutPage = () => {
   return (
     <Box
       sx={{
-        p: 4,
+        position: 'relative',
+        p: { xs: 2, sm: 4 },
         bgcolor: 'background.default',
         minHeight: '100vh',
       }}
     >
-      <Typography variant="h4" gutterBottom>
+      <Tooltip title="Close checkout">
+        <IconButton
+          onClick={() => navigate('/productList')}
+          aria-label="Close checkout"
+          sx={{
+            position: 'absolute',
+            top: { xs: 12, sm: 20 },
+            right: { xs: 12, sm: 20 },
+            bgcolor: 'background.paper',
+            border: '1px solid',
+            borderColor: 'divider',
+            '&:hover': { bgcolor: 'action.hover' },
+          }}
+        >
+          <CloseIcon />
+        </IconButton>
+      </Tooltip>
+
+      <Typography variant="h4" gutterBottom sx={{ pr: 6 }}>
         Checkout
       </Typography>
       <Typography variant="subtitle1" color="text.secondary" gutterBottom>
@@ -190,7 +212,8 @@ const CheckoutPage = () => {
               variant="outlined"
               sx={{
                 display: 'flex',
-                alignItems: 'center',
+                flexDirection: { xs: 'column', sm: 'row' },
+                alignItems: { xs: 'stretch', sm: 'center' },
                 p: 2,
               }}
             >
@@ -199,16 +222,17 @@ const CheckoutPage = () => {
                 image={item.Product.imageUrl}
                 alt={item.Product.name}
                 sx={{
-                  width: 100,
+                  width: { xs: '100%', sm: 100 },
                   height: 100,
                   objectFit: 'cover',
-                  mr: 2,
+                  mr: { xs: 0, sm: 2 },
+                  mb: { xs: 2, sm: 0 },
                   borderRadius: 1,
                   border: '1px solid',
                   borderColor: 'divider',
                 }}
               />
-              <CardContent sx={{ flexGrow: 1 }}>
+              <CardContent sx={{ flexGrow: 1, minWidth: 0, p: { xs: 0, sm: 2 }, '&:last-child': { pb: { xs: 0, sm: 2 } } }}>
                 <Typography variant="h6">
                   {item.Product.name}
                 </Typography>
@@ -237,6 +261,7 @@ const CheckoutPage = () => {
                 variant="outlined"
                 color="error"
                 onClick={() => removeItem(item.id)}
+                sx={{ mt: { xs: 2, sm: 0 }, ml: { xs: 0, sm: 2 }, alignSelf: { xs: 'flex-end', sm: 'center' } }}
               >
                 Remove
               </Button>
@@ -253,8 +278,10 @@ const CheckoutPage = () => {
           <Box
             sx={{
               display: 'flex',
+              flexDirection: { xs: 'column', sm: 'row' },
               justifyContent: 'space-between',
-              alignItems: 'center',
+              alignItems: { xs: 'stretch', sm: 'center' },
+              gap: 2,
               bgcolor: 'primary.light',
               p: 2,
               borderRadius: 2,
@@ -263,11 +290,11 @@ const CheckoutPage = () => {
             <Typography variant="h6" color="primary.dark">
               Order Total: ${cartTotal.toFixed(2)}
             </Typography>
-            <Box>
+            <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, gap: { xs: 1, sm: 0 } }}>
               <Button
                 variant="outlined"
                 onClick={() => navigate('/productList')}
-                sx={{ mr: 2 }}
+                sx={{ mr: { xs: 0, sm: 2 } }}
               >
                 Continue Shopping
               </Button>

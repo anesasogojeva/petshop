@@ -318,8 +318,8 @@ const VetDash = () => {
   };
 
   const renderChat = () => (
-    <Box sx={{ display: 'flex', height: '70vh', width: '100%', maxWidth: 1000, bgcolor: 'background.paper', borderRadius: 2, boxShadow: 1, p: 2 }}>
-      <Box sx={{ width: 250, borderRight: '1px solid', borderColor: 'divider', overflowY: 'auto' }}>
+    <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, height: { xs: 'auto', md: '70vh' }, width: '100%', maxWidth: 1000, bgcolor: 'background.paper', borderRadius: 2, boxShadow: 1, p: 2 }}>
+      <Box sx={{ width: { xs: '100%', md: 250 }, maxHeight: { xs: 160, md: 'none' }, borderRight: { xs: 'none', md: '1px solid' }, borderBottom: { xs: '1px solid', md: 'none' }, borderColor: 'divider', overflowY: 'auto' }}>
         <Typography variant="subtitle1" sx={{ p: 1.5, fontWeight: 700 }}>
           Users
         </Typography>
@@ -341,7 +341,7 @@ const VetDash = () => {
         ))}
       </Box>
 
-      <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', height: '100%', pl: 2 }}>
+      <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', height: { xs: '60vh', md: '100%' }, minWidth: 0, pl: { xs: 0, md: 2 }, pt: { xs: 2, md: 0 } }}>
         <Typography variant="h6" gutterBottom>
           {selectedChatUser ? `Chat with ${selectedChatUser.username || selectedChatUser.email}` : 'Select a user to start chatting'}
         </Typography>
@@ -616,9 +616,9 @@ const VetDash = () => {
         alignItems: 'center'
       }}>
         <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
-          <Toolbar sx={{ justifyContent: 'space-between' }}>
-            <Typography variant="h6">Veterinarian Dashboard</Typography>
-            <Typography variant="body2" color="text.secondary" noWrap>
+          <Toolbar sx={{ flexWrap: 'wrap', justifyContent: 'space-between', gap: 1, py: 1 }}>
+            <Typography variant="h6" noWrap sx={{ pl: { xs: 5, md: 0 } }}>Veterinarian Dashboard</Typography>
+            <Typography variant="body2" color="text.secondary" noWrap sx={{ minWidth: 0 }}>
               {userEmail}
             </Typography>
           </Toolbar>

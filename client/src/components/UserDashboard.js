@@ -3,9 +3,9 @@ import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
 import {
-  Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow,
+  Box, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow,
   TablePagination, IconButton, TextField, Button, Dialog, DialogActions, DialogContent, DialogTitle,
-  Select, MenuItem, Snackbar, Alert,
+  Select, MenuItem, Snackbar, Alert, Typography,
 } from '@mui/material';
 import { Delete, Edit, Add } from '@mui/icons-material';
 import Sidebar from './Sidebar';
@@ -14,6 +14,7 @@ import TableToolbar from './shared/TableToolbar';
 import EmptyState from './shared/EmptyState';
 import ConfirmDialog from './shared/ConfirmDialog';
 import UnauthorizedState from './shared/UnauthorizedState';
+import MobileCardList from './shared/MobileCardList';
 import useTableControls from '../hooks/useTableControls';
 
 const UserDashboard = () => {
@@ -146,7 +147,40 @@ const UserDashboard = () => {
         onAdd={() => handleOpenForm()}
       />
 
-      <TableContainer component={Paper}>
+      <MobileCardList
+        rows={pageRows}
+        emptyTitle="No users found"
+        emptyDescription="Add a user to get started."
+        pagination={{
+          count: filteredCount,
+          page,
+          onPageChange: (_, p) => setPage(p),
+          rowsPerPage,
+          onRowsPerPageChange: (e) => setRowsPerPage(Number(e.target.value)),
+          rowsPerPageOptions: [5, 10, 25],
+        }}
+        renderCard={(user) => (
+          <Paper key={user.id} variant="outlined" sx={{ p: 2 }}>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 1 }}>
+              <Box sx={{ minWidth: 0 }}>
+                <Typography variant="subtitle2">{user.name}</Typography>
+                <Typography variant="body2" color="text.secondary">{user.email}</Typography>
+                <Typography variant="body2" color="text.secondary" sx={{ textTransform: 'capitalize' }}>{user.role}</Typography>
+              </Box>
+              <Box>
+                <IconButton onClick={() => handleOpenForm(user)} aria-label="Edit" size="small">
+                  <Edit fontSize="small" />
+                </IconButton>
+                <IconButton onClick={() => setDeleteTarget(user)} aria-label="Delete" size="small">
+                  <Delete fontSize="small" />
+                </IconButton>
+              </Box>
+            </Box>
+          </Paper>
+        )}
+      />
+
+      <TableContainer component={Paper} sx={{ display: { xs: 'none', sm: 'block' } }}>
         <Table>
           <TableHead>
             <TableRow>

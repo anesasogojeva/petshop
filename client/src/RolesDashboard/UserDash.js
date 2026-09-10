@@ -3,8 +3,10 @@ import axios from 'axios';
 import { jwtDecode } from "jwt-decode";
 import {
   Box, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TablePagination, Dialog, DialogTitle, DialogContent, DialogActions,
-  Typography, AppBar, Toolbar, Button, Modal, TextField, MenuItem, Select, FormControl, InputLabel, Snackbar, Alert
+  Typography, AppBar, Toolbar, IconButton, Button, Modal, TextField, MenuItem, Select, FormControl, InputLabel, Snackbar, Alert, useMediaQuery
 } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+import MenuIcon from '@mui/icons-material/Menu';
 import petsBg from '../images/pet9.jpg';
 import UserSidebar from './UserSidebar';
 import SendIcon from '@mui/icons-material/Send';
@@ -17,6 +19,9 @@ import useTableControls from '../hooks/useTableControls';
 import { getCurrentRole } from '../utils/auth';
 
 const UserDash = () => {
+  const theme = useTheme();
+  const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const [adoptions, setAdoptions] = useState([]);
   const [appointments, setAppointments] = useState([]);
   const [records, setRecords] = useState([]);
@@ -449,8 +454,8 @@ const UserDash = () => {
   };
 
   const renderChat = () => (
-    <Box sx={{ display: 'flex', height: '70vh', width: '100%', maxWidth: 1000, bgcolor: 'background.paper', borderRadius: 2, boxShadow: 1, p: 2 }}>
-      <Box sx={{ width: 250, borderRight: '1px solid', borderColor: 'divider', overflowY: 'auto' }}>
+    <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, height: { xs: 'auto', md: '70vh' }, width: '100%', maxWidth: 1000, bgcolor: 'background.paper', borderRadius: 2, boxShadow: 1, p: 2 }}>
+      <Box sx={{ width: { xs: '100%', md: 250 }, maxHeight: { xs: 160, md: 'none' }, borderRight: { xs: 'none', md: '1px solid' }, borderBottom: { xs: '1px solid', md: 'none' }, borderColor: 'divider', overflowY: 'auto' }}>
         <Typography variant="subtitle1" sx={{ p: 1.5, fontWeight: 700 }}>
           Users
         </Typography>
@@ -472,7 +477,7 @@ const UserDash = () => {
         ))}
       </Box>
 
-      <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', height: '100%', pl: 2 }}>
+      <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', height: { xs: '60vh', md: '100%' }, minWidth: 0, pl: { xs: 0, md: 2 }, pt: { xs: 2, md: 0 } }}>
         <Typography variant="h6" gutterBottom>
           {selectedChatUser ? `Chat with ${selectedChatUser.username || selectedChatUser.email}` : 'Select a user to start chatting'}
         </Typography>
@@ -554,7 +559,7 @@ const UserDash = () => {
     switch (selectedTab) {
       case 'adoptions':
         return (
-          <Box sx={{ width: '90%', maxWidth: 900 }}>
+          <Box sx={{ width: { xs: '100%', sm: '90%' }, maxWidth: 900, minWidth: 0 }}>
             <TableToolbar
               title="My Adoptions"
               search={adoptionsTable.search}
@@ -597,14 +602,66 @@ const UserDash = () => {
 
       case 'appointments':
         return (
-          <Box sx={{ width: '90%', maxWidth: 900 }}>
+          <Box sx={{ width: { xs: '100%', sm: '90%' }, maxWidth: 900, minWidth: 0 }}>
             <TableToolbar
               title="My Appointments"
               search={appointmentsTable.search}
               onSearchChange={appointmentsTable.setSearch}
               searchPlaceholder="Search by pet, vet, reason..."
             />
-            <TableContainer component={Paper}>
+            {/* Compact card layout on phones — the 7-column table below doesn't fit
+                a phone screen without cutting columns off, so mobile gets the same
+                data/actions rendered as a stacked list instead. Desktop/tablet
+                (sm+) keep the original table+pagination exactly as before. */}
+            <Paper variant="outlined" sx={{ display: { xs: 'block', sm: 'none' } }}>
+              {appointmentsTable.pageRows.length === 0 ? (
+                <EmptyState title="No appointments yet" description="Book your pet's first visit." />
+              ) : (
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5, p: 1.5 }}>
+                  {appointmentsTable.pageRows.map((a) => (
+                    <Paper key={a.id} variant="outlined" sx={{ p: 2 }}>
+                      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 1, mb: 1 }}>
+                        <Box sx={{ minWidth: 0 }}>
+                          <Typography variant="subtitle2">{a.Slot?.date || 'N/A'} · {formatTime(a.Slot?.startTime)}</Typography>
+                          <Typography variant="body2" color="text.secondary">
+                            {a.Pet?.name || 'N/A'} with {a.Veterinarian?.User?.name || vets.find(v => v.id === a.veterinarianId)?.name || 'Unknown'}
+                          </Typography>
+                        </Box>
+                        {isUpcoming(a.Slot?.date) ? (
+                          <StatusChip status="active" label="Upcoming" />
+                        ) : (
+                          <StatusChip status="completed" label="Past" />
+                        )}
+                      </Box>
+                      <Typography variant="body2" sx={{ mb: 1.5 }}>{a.reason || 'N/A'}</Typography>
+                      <Button variant="outlined" color="error" size="small" onClick={() => handleDeleteAppointment(a.id)}>
+                        Cancel
+                      </Button>
+                    </Paper>
+                  ))}
+                </Box>
+              )}
+              <Box sx={{ overflowX: 'auto' }}>
+                <TablePagination
+                  component="div"
+                  count={appointmentsTable.filteredCount}
+                  page={appointmentsTable.page}
+                  onPageChange={(_, p) => appointmentsTable.setPage(p)}
+                  rowsPerPage={appointmentsTable.rowsPerPage}
+                  onRowsPerPageChange={(e) => appointmentsTable.setRowsPerPage(Number(e.target.value))}
+                  rowsPerPageOptions={[5, 10, 25]}
+                  labelRowsPerPage=""
+                  sx={{
+                    width: 'max-content',
+                    minWidth: '100%',
+                    '& .MuiTablePagination-toolbar': { pl: 1, pr: 0.5 },
+                    '& .MuiTablePagination-spacer': { flex: '0 0 8px' },
+                  }}
+                />
+              </Box>
+            </Paper>
+
+            <TableContainer component={Paper} sx={{ display: { xs: 'none', sm: 'block' } }}>
               <Table>
                 <TableHead>
                   <TableRow>
@@ -660,14 +717,59 @@ const UserDash = () => {
 
       case 'records':
         return (
-          <Box sx={{ width: '90%', maxWidth: 900 }}>
+          <Box sx={{ width: { xs: '100%', sm: '90%' }, maxWidth: 900, minWidth: 0 }}>
             <TableToolbar
               title="My Medical Records"
               search={recordsTable.search}
               onSearchChange={recordsTable.setSearch}
               searchPlaceholder="Search by pet, diagnosis, treatment..."
             />
-            <TableContainer component={Paper}>
+            {/* Compact card layout on phones — same reasoning as the appointments
+                tab above: a 6-column table doesn't fit a phone screen. Desktop/
+                tablet (sm+) keep the original table+pagination unchanged. */}
+            <Paper variant="outlined" sx={{ display: { xs: 'block', sm: 'none' } }}>
+              {recordsTable.pageRows.length === 0 ? (
+                <EmptyState title="No records yet" description="Your pet's medical history will show up here." />
+              ) : (
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5, p: 1.5 }}>
+                  {recordsTable.pageRows.map((record) => (
+                    <Paper key={record.id} variant="outlined" sx={{ p: 2 }}>
+                      <Typography variant="subtitle2">
+                        {record.date} · {record.Pet?.name || 'N/A'}
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
+                        {record.Veterinarian?.User?.name || vets.find(v => v.id === record.veterinarianId)?.name || 'Unknown'}
+                      </Typography>
+                      <Typography variant="body2"><strong>Diagnosis:</strong> {record.diagnosis}</Typography>
+                      <Typography variant="body2"><strong>Treatment:</strong> {record.treatment}</Typography>
+                      {record.notes && (
+                        <Typography variant="body2" sx={{ mt: 0.5 }}><strong>Notes:</strong> {record.notes}</Typography>
+                      )}
+                    </Paper>
+                  ))}
+                </Box>
+              )}
+              <Box sx={{ overflowX: 'auto' }}>
+                <TablePagination
+                  component="div"
+                  count={recordsTable.filteredCount}
+                  page={recordsTable.page}
+                  onPageChange={(_, p) => recordsTable.setPage(p)}
+                  rowsPerPage={recordsTable.rowsPerPage}
+                  onRowsPerPageChange={(e) => recordsTable.setRowsPerPage(Number(e.target.value))}
+                  rowsPerPageOptions={[5, 10, 25]}
+                  labelRowsPerPage=""
+                  sx={{
+                    width: 'max-content',
+                    minWidth: '100%',
+                    '& .MuiTablePagination-toolbar': { pl: 1, pr: 0.5 },
+                    '& .MuiTablePagination-spacer': { flex: '0 0 8px' },
+                  }}
+                />
+              </Box>
+            </Paper>
+
+            <TableContainer component={Paper} sx={{ display: { xs: 'none', sm: 'block' } }}>
               <Table>
                 <TableHead>
                   <TableRow>
@@ -711,7 +813,7 @@ const UserDash = () => {
 
       case 'orders':
         return (
-          <Box sx={{ width: '90%', maxWidth: 900 }}>
+          <Box sx={{ width: { xs: '100%', sm: '90%' }, maxWidth: 900, minWidth: 0 }}>
             <TableToolbar
               title="My Orders"
               search={ordersTable.search}
@@ -754,7 +856,7 @@ const UserDash = () => {
 
       case 'pets':
         return (
-          <Box sx={{ width: '90%', maxWidth: 900 }}>
+          <Box sx={{ width: { xs: '100%', sm: '90%' }, maxWidth: 900, minWidth: 0 }}>
             <TableToolbar
               title="My Pets"
               search={petsTable.search}
@@ -822,6 +924,8 @@ const UserDash = () => {
       sx={{
         display: 'flex',
         minHeight: '100vh',
+        maxWidth: '100vw',
+        overflowX: 'hidden',
         backgroundImage: `url(${petsBg})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
@@ -829,13 +933,20 @@ const UserDash = () => {
       }}
     >
       <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
-        <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
-          <Typography variant="h6" noWrap component="div">
-            My Account
-          </Typography>
+        <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', gap: 1 }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, minWidth: 0, flexShrink: 0 }}>
+            {!isDesktop && (
+              <IconButton edge="start" onClick={() => setMobileNavOpen(true)} aria-label="Open menu">
+                <MenuIcon />
+              </IconButton>
+            )}
+            <Typography variant="h6" noWrap component="div">
+              My Account
+            </Typography>
+          </Box>
 
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-            <Typography variant="body2" noWrap component="div" color="text.secondary">
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: { xs: 1, sm: 2 }, minWidth: 0 }}>
+            <Typography variant="body2" noWrap component="div" color="text.secondary" sx={{ minWidth: 0 }}>
               {userEmail}
             </Typography>
             <Button component={RouterLink} to="/" variant="outlined" size="small">
@@ -851,13 +962,16 @@ const UserDash = () => {
         setOpenAddAppointment={setOpenAddAppointment}
         setOpenAddReview={setOpenAddReview}
         setOpenAddPet={setOpenAddPet}
+        mobileOpen={mobileNavOpen}
+        onMobileClose={() => setMobileNavOpen(false)}
       />
 
       <Box
         component="main"
         sx={{
           flexGrow: 1,
-          p: 3,
+          minWidth: 0,
+          p: { xs: 2, sm: 3 },
           mt: 8,
           bgcolor: 'rgba(246, 244, 242, 0.9)',
           display: 'flex',
@@ -1009,6 +1123,7 @@ const UserDash = () => {
             boxShadow: 24,
             p: 4,
             width: 400,
+            maxWidth: '92vw',
             borderRadius: 2,
             display: 'flex',
             flexDirection: 'column',

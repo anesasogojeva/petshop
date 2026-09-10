@@ -97,6 +97,9 @@ const theme = createTheme({
           padding: '12px 16px',
           borderColor: colors.border,
           fontSize: '0.875rem',
+          '@media (max-width:600px)': {
+            padding: '8px 10px',
+          },
         },
         head: {
           fontWeight: 700,

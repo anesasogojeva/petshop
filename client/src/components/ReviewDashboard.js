@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import {
-  Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow,
-  TablePagination, IconButton, Snackbar, Alert, Rating,
+  Box, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow,
+  TablePagination, IconButton, Snackbar, Alert, Rating, Typography,
 } from '@mui/material';
 import { Delete } from '@mui/icons-material';
 import Sidebar from './Sidebar';
@@ -11,6 +11,7 @@ import TableToolbar from './shared/TableToolbar';
 import EmptyState from './shared/EmptyState';
 import ConfirmDialog from './shared/ConfirmDialog';
 import UnauthorizedState from './shared/UnauthorizedState';
+import MobileCardList from './shared/MobileCardList';
 import useTableControls from '../hooks/useTableControls';
 
 const ReviewDashboard = () => {
@@ -63,7 +64,36 @@ const ReviewDashboard = () => {
         searchPlaceholder="Search by user, product, comment..."
       />
 
-      <TableContainer component={Paper}>
+      <MobileCardList
+        rows={pageRows}
+        emptyTitle="No reviews found"
+        emptyDescription="Customer reviews will show up here."
+        pagination={{
+          count: filteredCount,
+          page,
+          onPageChange: (_, p) => setPage(p),
+          rowsPerPage,
+          onRowsPerPageChange: (e) => setRowsPerPage(Number(e.target.value)),
+          rowsPerPageOptions: [5, 10, 25],
+        }}
+        renderCard={(review) => (
+          <Paper key={review.id} variant="outlined" sx={{ p: 2 }}>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 1, mb: 1 }}>
+              <Box sx={{ minWidth: 0 }}>
+                <Typography variant="subtitle2">{review.User?.name}</Typography>
+                <Typography variant="body2" color="text.secondary">{review.Product?.name}</Typography>
+                <Rating value={review.rating} readOnly size="small" />
+              </Box>
+              <IconButton onClick={() => setDeleteTarget(review)} aria-label="Delete" size="small">
+                <Delete fontSize="small" />
+              </IconButton>
+            </Box>
+            <Typography variant="body2">{review.comment}</Typography>
+          </Paper>
+        )}
+      />
+
+      <TableContainer component={Paper} sx={{ display: { xs: 'none', sm: 'block' } }}>
         <Table>
           <TableHead>
             <TableRow>

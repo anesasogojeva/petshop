@@ -3,9 +3,9 @@ import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
 import {
-  Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow,
+  Box, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow,
   TablePagination, IconButton, TextField, Button, Dialog, DialogActions,
-  DialogContent, DialogTitle, Snackbar, Alert,
+  DialogContent, DialogTitle, Snackbar, Alert, Typography,
 } from '@mui/material';
 import PhotoLibraryIcon from '@mui/icons-material/PhotoLibrary';
 import { Delete, Edit, Add } from '@mui/icons-material';
@@ -16,6 +16,7 @@ import EmptyState from './shared/EmptyState';
 import ConfirmDialog from './shared/ConfirmDialog';
 import ImageManagerDialog from './shared/ImageManagerDialog';
 import UnauthorizedState from './shared/UnauthorizedState';
+import MobileCardList from './shared/MobileCardList';
 import useTableControls from '../hooks/useTableControls';
 
 const VeterinarianDashboard = () => {
@@ -223,7 +224,45 @@ const VeterinarianDashboard = () => {
         onAdd={() => handleOpenForm()}
       />
 
-      <TableContainer component={Paper}>
+      <MobileCardList
+        rows={pageRows}
+        emptyTitle="No veterinarians found"
+        emptyDescription="Add a veterinarian to get started."
+        pagination={{
+          count: filteredCount,
+          page,
+          onPageChange: (_, p) => setPage(p),
+          rowsPerPage,
+          onRowsPerPageChange: (e) => setRowsPerPage(Number(e.target.value)),
+          rowsPerPageOptions: [5, 10, 25],
+        }}
+        renderCard={(v) => (
+          <Paper key={v.id} variant="outlined" sx={{ p: 2 }}>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 1 }}>
+              <Box sx={{ minWidth: 0 }}>
+                <Typography variant="subtitle2">{v.User?.name || 'Unknown'}</Typography>
+                <Typography variant="body2" color="text.secondary">{v.specialization}</Typography>
+                <Typography variant="body2" color="text.secondary">
+                  {v.yearsOfExperience} yrs experience · License {v.licenseNumber}
+                </Typography>
+              </Box>
+              <Box>
+                <IconButton onClick={() => handleOpenImages(v)} aria-label="Manage images" size="small">
+                  <PhotoLibraryIcon fontSize="small" />
+                </IconButton>
+                <IconButton onClick={() => handleOpenForm(v)} aria-label="Edit" size="small">
+                  <Edit fontSize="small" />
+                </IconButton>
+                <IconButton onClick={() => setDeleteTarget(v)} aria-label="Delete" size="small">
+                  <Delete fontSize="small" />
+                </IconButton>
+              </Box>
+            </Box>
+          </Paper>
+        )}
+      />
+
+      <TableContainer component={Paper} sx={{ display: { xs: 'none', sm: 'block' } }}>
         <Table>
           <TableHead>
             <TableRow>

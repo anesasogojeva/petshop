@@ -23,6 +23,11 @@ const Appointment = sequelize.define('Appointment', {
     type: DataTypes.STRING,
     allowNull: true,
   },
+  status: {
+    type: DataTypes.ENUM('pending', 'confirmed', 'completed', 'cancelled'),
+    allowNull: false,
+    defaultValue: 'pending',
+  },
   petId: {
     type: DataTypes.INTEGER,
     allowNull: false,

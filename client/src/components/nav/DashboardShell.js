@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { Box, AppBar, Toolbar, Typography, IconButton, Chip, useMediaQuery } from '@mui/material';
+import { Box, AppBar, Toolbar, Typography, Chip, useMediaQuery } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-import MenuIcon from '@mui/icons-material/Menu';
 import { drawerWidth } from '../../theme/tokens';
 
 /**
@@ -9,6 +8,11 @@ import { drawerWidth } from '../../theme/tokens';
  * optional role chip) + whatever nav drawer is passed in + a content slot.
  * Adopted by the 10 admin dashboard pages in place of each page's own
  * hand-rolled AppBar/Sidebar/Box boilerplate.
+ *
+ * The mobile "open menu" button lives on the nav itself (see Sidebar.js),
+ * since `nav` is always handed in as a ready-made element here — this
+ * shell's own mobileOpen state only matters when a caller opts into the
+ * `nav` render-prop form instead.
  */
 const DashboardShell = ({ title, roleLabel, nav, children }) => {
   const theme = useTheme();
@@ -25,12 +29,7 @@ const DashboardShell = ({ title, roleLabel, nav, children }) => {
         }}
       >
         <Toolbar sx={{ justifyContent: 'space-between', gap: 2 }}>
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-            {!isDesktop && (
-              <IconButton edge="start" onClick={() => setMobileOpen(true)} aria-label="Open menu">
-                <MenuIcon />
-              </IconButton>
-            )}
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, pl: isDesktop ? 0 : 5, minWidth: 0 }}>
             <Typography variant="h6" noWrap>
               {title}
             </Typography>

@@ -209,7 +209,12 @@ const config = { headers: { Authorization: `Bearer ${token}` } };
         {filteredPets.map(pet => {
           const primaryImage = pet.images?.find(img => img.isPrimary) || pet.images?.[0];
           return (
-            <article key={pet.id} className="card" tabIndex={0} aria-label={`Pet named ${pet.name}`}>
+            <article
+              key={pet.id}
+              className={`card${pet.adopted ? ' card-adopted' : ''}`}
+              tabIndex={0}
+              aria-label={`Pet named ${pet.name}${pet.adopted ? ', already adopted' : ''}`}
+            >
               {primaryImage ? (
                 <img
                   src={`http://localhost:5000/${primaryImage.imageUrl}`}

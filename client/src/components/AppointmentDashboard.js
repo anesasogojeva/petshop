@@ -3,7 +3,7 @@ import axios from 'axios';
 import {
   Box, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow,
   TablePagination, IconButton, Button, Dialog, DialogActions, DialogContent, DialogTitle,
-  TextField, MenuItem, Snackbar, Alert, Typography,
+  TextField, MenuItem, Select, Snackbar, Alert, Typography, CircularProgress,
 } from '@mui/material';
 import { Delete, Edit, Add } from '@mui/icons-material';
 import Sidebar from './Sidebar';
@@ -13,7 +13,11 @@ import EmptyState from './shared/EmptyState';
 import ConfirmDialog from './shared/ConfirmDialog';
 import UnauthorizedState from './shared/UnauthorizedState';
 import TimeSlotPicker from './shared/TimeSlotPicker';
+import StatusChip from './shared/StatusChip';
+import MobileCardList from './shared/MobileCardList';
 import useTableControls from '../hooks/useTableControls';
+
+const APPOINTMENT_STATUSES = ['pending', 'confirmed', 'completed', 'cancelled'];
 
 const AppointmentDashboard = () => {
   const [appointments, setAppointments] = useState([]);
@@ -27,6 +31,7 @@ const AppointmentDashboard = () => {
   const [currentId, setCurrentId] = useState(null);
   const [deleteTarget, setDeleteTarget] = useState(null);
   const [loadingSlots, setLoadingSlots] = useState(false);
+  const [updatingStatusId, setUpdatingStatusId] = useState(null);
   const [message, setMessage] = useState({ open: false, text: '', severity: 'success' });
 
   const showMessage = (text, severity = 'success') => setMessage({ open: true, text, severity });
@@ -248,6 +253,21 @@ const AppointmentDashboard = () => {
       .finally(() => setDeleteTarget(null));
   };
 
+  const handleStatusChange = (appointment, newStatus) => {
+    if (newStatus === appointment.status) return;
+    setUpdatingStatusId(appointment.id);
+    axios.patch(`http://localhost:5000/api/appointments/${appointment.id}/status`, { status: newStatus }, authHeader)
+      .then(() => {
+        setAppointments(prev => prev.map(a => (a.id === appointment.id ? { ...a, status: newStatus } : a)));
+        showMessage('Appointment status updated.');
+      })
+      .catch(err => {
+        console.error('Error updating appointment status:', err);
+        showMessage(err.response?.data?.message || 'Failed to update appointment status.', 'error');
+      })
+      .finally(() => setUpdatingStatusId(null));
+  };
+
   const { search, setSearch, page, setPage, rowsPerPage, setRowsPerPage, pageRows, filteredCount } =
     useTableControls(appointments, { searchKeys: ['Pet.name', 'Veterinarian.User.name', 'reason'] });
 
@@ -265,7 +285,58 @@ const AppointmentDashboard = () => {
         onAdd={() => handleOpenForm()}
       />
 
-      <TableContainer component={Paper}>
+      <MobileCardList
+        rows={pageRows}
+        emptyTitle="No appointments found"
+        emptyDescription="New bookings will show up here."
+        pagination={{
+          count: filteredCount,
+          page,
+          onPageChange: (_, p) => setPage(p),
+          rowsPerPage,
+          onRowsPerPageChange: (e) => setRowsPerPage(Number(e.target.value)),
+          rowsPerPageOptions: [5, 10, 25],
+        }}
+        renderCard={(appointment) => (
+          <Paper key={appointment.id} variant="outlined" sx={{ p: 2 }}>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 1, mb: 1 }}>
+              <Box sx={{ minWidth: 0 }}>
+                <Typography variant="subtitle2">
+                  {appointment.Slot?.date || 'N/A'} · {formatTime(appointment.Slot?.startTime)}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  {appointment.Pet?.name || 'N/A'} with {appointment.Veterinarian?.User?.name || 'N/A'}
+                </Typography>
+              </Box>
+              <Box>
+                <IconButton onClick={() => handleOpenForm(appointment)} aria-label="Edit" size="small">
+                  <Edit fontSize="small" />
+                </IconButton>
+                <IconButton onClick={() => setDeleteTarget(appointment)} aria-label="Delete" size="small">
+                  <Delete fontSize="small" />
+                </IconButton>
+              </Box>
+            </Box>
+            <Typography variant="body2" sx={{ mb: 1.5 }}>{appointment.reason}</Typography>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+              <Select
+                size="small"
+                value={appointment.status || 'pending'}
+                onChange={(e) => handleStatusChange(appointment, e.target.value)}
+                disabled={updatingStatusId === appointment.id}
+                sx={{ minWidth: 140 }}
+              >
+                {APPOINTMENT_STATUSES.map(s => (
+                  <MenuItem key={s} value={s}><StatusChip status={s} /></MenuItem>
+                ))}
+              </Select>
+              {updatingStatusId === appointment.id && <CircularProgress size={16} />}
+            </Box>
+          </Paper>
+        )}
+      />
+
+      <TableContainer component={Paper} sx={{ display: { xs: 'none', sm: 'block' } }}>
         <Table>
           <TableHead>
             <TableRow>
@@ -274,13 +345,14 @@ const AppointmentDashboard = () => {
               <TableCell>Pet</TableCell>
               <TableCell>Veterinarian</TableCell>
               <TableCell>Reason</TableCell>
+              <TableCell>Status</TableCell>
               <TableCell align="right">Actions</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {pageRows.length === 0 ? (
               <TableRow>
-                <TableCell colSpan={6}>
+                <TableCell colSpan={7}>
                   <EmptyState title="No appointments found" description="New bookings will show up here." />
                 </TableCell>
               </TableRow>
@@ -292,6 +364,22 @@ const AppointmentDashboard = () => {
                   <TableCell>{appointment.Pet?.name || 'N/A'}</TableCell>
                   <TableCell>{appointment.Veterinarian?.User?.name || 'N/A'}</TableCell>
                   <TableCell>{appointment.reason}</TableCell>
+                  <TableCell>
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                      <Select
+                        size="small"
+                        value={appointment.status || 'pending'}
+                        onChange={(e) => handleStatusChange(appointment, e.target.value)}
+                        disabled={updatingStatusId === appointment.id}
+                        sx={{ minWidth: 140 }}
+                      >
+                        {APPOINTMENT_STATUSES.map(s => (
+                          <MenuItem key={s} value={s}><StatusChip status={s} /></MenuItem>
+                        ))}
+                      </Select>
+                      {updatingStatusId === appointment.id && <CircularProgress size={16} />}
+                    </Box>
+                  </TableCell>
                   <TableCell align="right">
                     <IconButton onClick={() => handleOpenForm(appointment)} aria-label="Edit">
                       <Edit fontSize="small" />

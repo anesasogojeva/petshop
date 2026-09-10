@@ -3,9 +3,9 @@ import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
 import {
-  Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow,
+  Box, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow,
   TablePagination, IconButton, TextField, Button, Dialog, DialogActions, DialogContent, DialogTitle,
-  MenuItem, Snackbar, Alert,
+  MenuItem, Snackbar, Alert, Typography,
 } from '@mui/material';
 import { Delete, Edit, Add } from '@mui/icons-material';
 import Sidebar from './Sidebar';
@@ -14,6 +14,7 @@ import TableToolbar from './shared/TableToolbar';
 import EmptyState from './shared/EmptyState';
 import ConfirmDialog from './shared/ConfirmDialog';
 import UnauthorizedState from './shared/UnauthorizedState';
+import MobileCardList from './shared/MobileCardList';
 import useTableControls from '../hooks/useTableControls';
 
 const RecordDashboard = () => {
@@ -173,7 +174,40 @@ const RecordDashboard = () => {
         onAdd={() => handleOpenForm()}
       />
 
-      <TableContainer component={Paper}>
+      <MobileCardList
+        rows={pageRows}
+        emptyTitle="No records found"
+        emptyDescription="Medical records will show up here."
+        pagination={{
+          count: filteredCount,
+          page,
+          onPageChange: (_, p) => setPage(p),
+          rowsPerPage,
+          onRowsPerPageChange: (e) => setRowsPerPage(Number(e.target.value)),
+          rowsPerPageOptions: [5, 10, 25],
+        }}
+        renderCard={(record) => (
+          <Paper key={record.id} variant="outlined" sx={{ p: 2 }}>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 1, mb: 1 }}>
+              <Box sx={{ minWidth: 0 }}>
+                <Typography variant="subtitle2">{record.Pet?.name || 'N/A'} · {record.date}</Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Owner: {record.User?.name || 'N/A'} · Vet: {record.veterinarianId
+                    ? vets.find(vet => vet.id === record.veterinarianId)?.name || 'N/A'
+                    : 'N/A'}
+                </Typography>
+              </Box>
+              <Box>
+                <IconButton onClick={() => handleOpenForm(record)} aria-label="Edit" size="small"><Edit fontSize="small" /></IconButton>
+                <IconButton onClick={() => setDeleteTarget(record)} aria-label="Delete" size="small"><Delete fontSize="small" /></IconButton>
+              </Box>
+            </Box>
+            <Typography variant="body2"><strong>Diagnosis:</strong> {record.diagnosis}</Typography>
+          </Paper>
+        )}
+      />
+
+      <TableContainer component={Paper} sx={{ display: { xs: 'none', sm: 'block' } }}>
         <Table>
           <TableHead>
             <TableRow>

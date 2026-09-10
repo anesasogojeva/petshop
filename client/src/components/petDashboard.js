@@ -14,6 +14,8 @@ import EmptyState from './shared/EmptyState';
 import ConfirmDialog from './shared/ConfirmDialog';
 import ImageManagerDialog from './shared/ImageManagerDialog';
 import UnauthorizedState from './shared/UnauthorizedState';
+import StatusChip from './shared/StatusChip';
+import MobileCardList from './shared/MobileCardList';
 import useTableControls from '../hooks/useTableControls';
 
 const PetDashboard = () => {
@@ -210,7 +212,50 @@ const PetDashboard = () => {
         onAdd={() => handleOpenForm()}
       />
 
-      <TableContainer component={Paper}>
+      <MobileCardList
+        rows={pageRows}
+        emptyTitle="No pets found"
+        emptyDescription="Add a pet to get started."
+        pagination={{
+          count: filteredCount,
+          page,
+          onPageChange: (_, p) => setPage(p),
+          rowsPerPage,
+          onRowsPerPageChange: (e) => setRowsPerPage(Number(e.target.value)),
+          rowsPerPageOptions: [5, 10, 25],
+        }}
+        renderCard={(pet) => (
+          <Paper key={pet.id} variant="outlined" sx={{ p: 2 }}>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 1, mb: 1 }}>
+              <Box sx={{ minWidth: 0 }}>
+                <Typography variant="subtitle2">{pet.name}</Typography>
+                <Typography variant="body2" color="text.secondary">
+                  {pet.breed} · {pet.age} yrs · {pet.gender} · {pet.type}
+                </Typography>
+              </Box>
+              {pet.adopted
+                ? <StatusChip status="booked" label="Adopted" />
+                : <StatusChip status="available" label="Available" />}
+            </Box>
+            <Box sx={{ display: 'flex', gap: 0.5 }}>
+              <IconButton onClick={() => handleOpenImages(pet)} aria-label="Manage images" size="small">
+                <PhotoLibraryIcon fontSize="small" />
+              </IconButton>
+              <IconButton onClick={() => handleOpenForm(pet)} aria-label="Edit" size="small">
+                <Edit fontSize="small" />
+              </IconButton>
+              <IconButton onClick={() => setDeleteTarget(pet)} aria-label="Delete" size="small">
+                <Delete fontSize="small" />
+              </IconButton>
+              <IconButton onClick={() => handleOpenLogs(pet)} aria-label="Logs" size="small">
+                <NoteAlt fontSize="small" />
+              </IconButton>
+            </Box>
+          </Paper>
+        )}
+      />
+
+      <TableContainer component={Paper} sx={{ display: { xs: 'none', sm: 'block' } }}>
         <Table>
           <TableHead>
             <TableRow>
@@ -239,7 +284,11 @@ const PetDashboard = () => {
                   <TableCell>{pet.age}</TableCell>
                   <TableCell>{pet.gender}</TableCell>
                   <TableCell>{pet.type}</TableCell>
-                  <TableCell>{pet.adopted ? 'Yes' : 'No'}</TableCell>
+                  <TableCell>
+                    {pet.adopted
+                      ? <StatusChip status="booked" label="Adopted" />
+                      : <StatusChip status="available" label="Available" />}
+                  </TableCell>
                   <TableCell>
                     <IconButton onClick={() => handleOpenImages(pet)} aria-label="Manage images">
                       <PhotoLibraryIcon />

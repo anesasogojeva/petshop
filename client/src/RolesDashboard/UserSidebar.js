@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { Typography, IconButton, Button, useMediaQuery } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
-import MenuIcon from '@mui/icons-material/Menu';
+import { Typography, Button } from '@mui/material';
 import LogoutIcon from '@mui/icons-material/Logout';
 import ChatIcon from '@mui/icons-material/Chat';
 import PetsIcon from '@mui/icons-material/Pets';
@@ -14,17 +12,20 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import RateReviewIcon from '@mui/icons-material/RateReview';
 import NavDrawer from '../components/nav/NavDrawer';
 
+// The mobile "open menu" button lives in UserDash's own AppBar Toolbar
+// (in normal flex flow, next to the title) rather than floating here, so it
+// can never visually overlap the title — this component just owns the
+// drawer's contents and is opened/closed by the parent via `mobileOpen`.
 const UserSidebar = ({
   selectedTab,
   setSelectedTab,
   setOpenAddAppointment,
   setOpenAddReview,
   setOpenAddPet,
+  mobileOpen = false,
+  onMobileClose = () => {},
 }) => {
   const navigate = useNavigate();
-  const theme = useTheme();
-  const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
-  const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleLogout = async () => {
     const refreshToken = localStorage.getItem('refreshToken');
@@ -52,29 +53,11 @@ const UserSidebar = ({
   ];
 
   return (
-    <>
-      {!isDesktop && (
-        <IconButton
-          onClick={() => setMobileOpen(true)}
-          aria-label="Open menu"
-          sx={{
-            position: 'fixed',
-            top: 12,
-            left: 12,
-            zIndex: (t) => t.zIndex.drawer + 2,
-            bgcolor: 'background.paper',
-            boxShadow: 1,
-            '&:hover': { bgcolor: 'background.paper' },
-          }}
-        >
-          <MenuIcon />
-        </IconButton>
-      )}
-      <NavDrawer
-        items={items}
-        mobileOpen={mobileOpen}
-        onMobileClose={() => setMobileOpen(false)}
-        header={
+    <NavDrawer
+      items={items}
+      mobileOpen={mobileOpen}
+      onMobileClose={onMobileClose}
+      header={
           <Typography variant="h6" sx={{ color: 'primary.main' }}>
             My Account
           </Typography>
@@ -104,7 +87,6 @@ const UserSidebar = ({
           </Button>
         }
       />
-    </>
   );
 };
 

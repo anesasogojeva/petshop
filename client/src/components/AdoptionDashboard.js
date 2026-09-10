@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import {
-  Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow,
+  Box, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow,
   TablePagination, IconButton, Button, Dialog, DialogActions, DialogContent, DialogTitle,
-  TextField, MenuItem, Snackbar, Alert,
+  TextField, MenuItem, Snackbar, Alert, Typography,
 } from '@mui/material';
 import { Delete, Edit, Add } from '@mui/icons-material';
 import Sidebar from './Sidebar';
@@ -12,6 +12,7 @@ import TableToolbar from './shared/TableToolbar';
 import EmptyState from './shared/EmptyState';
 import ConfirmDialog from './shared/ConfirmDialog';
 import UnauthorizedState from './shared/UnauthorizedState';
+import MobileCardList from './shared/MobileCardList';
 import useTableControls from '../hooks/useTableControls';
 
 const AdoptionDashboard = () => {
@@ -133,7 +134,40 @@ const AdoptionDashboard = () => {
         onAdd={() => handleOpenForm()}
       />
 
-      <TableContainer component={Paper}>
+      <MobileCardList
+        rows={pageRows}
+        emptyTitle="No adoptions found"
+        emptyDescription="Adoption records will show up here."
+        pagination={{
+          count: filteredCount,
+          page,
+          onPageChange: (_, p) => setPage(p),
+          rowsPerPage,
+          onRowsPerPageChange: (e) => setRowsPerPage(Number(e.target.value)),
+          rowsPerPageOptions: [5, 10, 25],
+        }}
+        renderCard={(a) => (
+          <Paper key={a.id} variant="outlined" sx={{ p: 2 }}>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 1 }}>
+              <Box sx={{ minWidth: 0 }}>
+                <Typography variant="subtitle2">{a.Pet?.name || 'N/A'} · Adoption #{a.id}</Typography>
+                <Typography variant="body2" color="text.secondary">{a.User?.name || 'N/A'}</Typography>
+                <Typography variant="body2" color="text.secondary">{a.User?.email || 'N/A'}</Typography>
+              </Box>
+              <Box>
+                <IconButton onClick={() => handleOpenForm(a)} aria-label="Edit" size="small">
+                  <Edit fontSize="small" />
+                </IconButton>
+                <IconButton onClick={() => setDeleteTarget(a)} aria-label="Delete" size="small">
+                  <Delete fontSize="small" />
+                </IconButton>
+              </Box>
+            </Box>
+          </Paper>
+        )}
+      />
+
+      <TableContainer component={Paper} sx={{ display: { xs: 'none', sm: 'block' } }}>
         <Table>
           <TableHead>
             <TableRow>

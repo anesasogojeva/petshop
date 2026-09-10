@@ -274,6 +274,33 @@ exports.updateAppointment = async (req, res) => {
   }
 };
 
+// Update only the status of an appointment (admin)
+const VALID_STATUSES = ['pending', 'confirmed', 'completed', 'cancelled'];
+
+exports.updateAppointmentStatus = async (req, res) => {
+  try {
+    const appointmentId = req.params.id;
+    const { status } = req.body;
+
+    if (!VALID_STATUSES.includes(status)) {
+      return res.status(400).json({ message: `Status must be one of: ${VALID_STATUSES.join(', ')}` });
+    }
+
+    const appointment = await Appointment.findByPk(appointmentId);
+    if (!appointment) {
+      return res.status(404).json({ message: 'Appointment not found' });
+    }
+
+    appointment.status = status;
+    await appointment.save();
+
+    res.status(200).json({ message: 'Appointment status updated successfully', appointment });
+  } catch (error) {
+    console.error('Error updating appointment status:', error);
+    res.status(500).json({ message: 'Failed to update appointment status', error: error.message });
+  }
+};
+
 // Delete appointment
 exports.deleteAppointment = async (req, res) => {
   try {

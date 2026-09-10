@@ -3,7 +3,7 @@ import axios from 'axios';
 import {
   Box, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow,
   TablePagination, IconButton, TextField, Button, Dialog, DialogActions, DialogContent, DialogTitle,
-  MenuItem, Select, InputLabel, FormControl, Snackbar, Alert,
+  MenuItem, Select, InputLabel, FormControl, Snackbar, Alert, Typography,
 } from '@mui/material';
 import PhotoLibraryIcon from '@mui/icons-material/PhotoLibrary';
 import { Delete, Edit, Add } from '@mui/icons-material';
@@ -14,6 +14,7 @@ import EmptyState from './shared/EmptyState';
 import ConfirmDialog from './shared/ConfirmDialog';
 import ImageManagerDialog from './shared/ImageManagerDialog';
 import UnauthorizedState from './shared/UnauthorizedState';
+import MobileCardList from './shared/MobileCardList';
 import useTableControls from '../hooks/useTableControls';
 
 const ProductDashboard = () => {
@@ -179,7 +180,48 @@ const ProductDashboard = () => {
         onAdd={() => handleOpenForm()}
       />
 
-      <TableContainer component={Paper}>
+      <MobileCardList
+        rows={pageRows}
+        emptyTitle="No products found"
+        emptyDescription="Add a product to get started."
+        pagination={{
+          count: filteredCount,
+          page,
+          onPageChange: (_, p) => setPage(p),
+          rowsPerPage,
+          onRowsPerPageChange: (e) => setRowsPerPage(Number(e.target.value)),
+          rowsPerPageOptions: [5, 10, 25],
+        }}
+        renderCard={(product) => (
+          <Paper key={product.id} variant="outlined" sx={{ p: 2 }}>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 1, mb: 1 }}>
+              <Box sx={{ minWidth: 0 }}>
+                <Typography variant="subtitle2">{product.name}</Typography>
+                <Typography variant="body2" color="text.secondary">{product.category}</Typography>
+              </Box>
+              <Box>
+                <IconButton onClick={() => handleOpenImages(product)} aria-label="Manage images" size="small">
+                  <PhotoLibraryIcon fontSize="small" />
+                </IconButton>
+                <IconButton onClick={() => handleOpenForm(product)} aria-label="Edit" size="small">
+                  <Edit fontSize="small" />
+                </IconButton>
+                <IconButton onClick={() => setDeleteTarget(product)} aria-label="Delete" size="small">
+                  <Delete fontSize="small" />
+                </IconButton>
+              </Box>
+            </Box>
+            <Typography variant="body2" sx={{ mb: 1 }}>{product.description}</Typography>
+            <Typography variant="body2">
+              <Box component="s" sx={{ color: 'text.disabled', mr: 0.5 }}>${Number(product.price).toFixed(2)}</Box>
+              <strong>${Number(product.price * (1 - product.discount)).toFixed(2)}</strong>
+              {' '}({product.discount * 100}% off)
+            </Typography>
+          </Paper>
+        )}
+      />
+
+      <TableContainer component={Paper} sx={{ display: { xs: 'none', sm: 'block' } }}>
         <Table>
           <TableHead>
             <TableRow>
