@@ -38,7 +38,7 @@ const AdoptionDashboard = () => {
   }, []);
 
   const fetchAdoptions = () => {
-    axios.get('http://localhost:5000/api/adoption', authHeader)
+    axios.get(`${process.env.REACT_APP_API_URL}/api/adoption`, authHeader)
       .then(res => setAdoptions(res.data.adoptions))
       .catch(err => {
         console.error('Error fetching adoption:', err);
@@ -47,7 +47,7 @@ const AdoptionDashboard = () => {
   };
 
   const fetchPets = () => {
-    axios.get('http://localhost:5000/api/pets', authHeader)
+    axios.get(`${process.env.REACT_APP_API_URL}/api/pets`, authHeader)
       .then(res => setPets(res.data))
       .catch(err => {
         console.error('Error fetching pets:', err);
@@ -56,7 +56,7 @@ const AdoptionDashboard = () => {
   };
 
   const fetchUsers = () => {
-    axios.get('http://localhost:5000/api/users', authHeader)
+    axios.get(`${process.env.REACT_APP_API_URL}/api/users`, authHeader)
       .then(res => setUsers(res.data))
       .catch(err => {
         console.error('Error fetching users:', err);
@@ -89,8 +89,8 @@ const AdoptionDashboard = () => {
 
   const handleSubmitForm = () => {
     const request = isEditing && currentId
-      ? axios.put(`http://localhost:5000/api/adoption/${currentId}`, formData, authHeader)
-      : axios.post(`http://localhost:5000/api/adoption`, formData, authHeader);
+      ? axios.put(`${process.env.REACT_APP_API_URL}/api/adoption/${currentId}`, formData, authHeader)
+      : axios.post(`${process.env.REACT_APP_API_URL}/api/adoption`, formData, authHeader);
 
     request
       .then(() => {
@@ -105,7 +105,7 @@ const AdoptionDashboard = () => {
   };
 
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:5000/api/adoption/${id}`, authHeader)
+    axios.delete(`${process.env.REACT_APP_API_URL}/api/adoption/${id}`, authHeader)
       .then(() => {
         fetchAdoptions();
         showMessage('Adoption deleted successfully.');

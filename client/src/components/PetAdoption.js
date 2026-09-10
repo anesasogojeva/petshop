@@ -60,11 +60,11 @@ const config = { headers: { Authorization: `Bearer ${token}` } };
 
   const fetchPets = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/pets', config);
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/pets`, config);
       const petsWithImages = await Promise.all(
         res.data.map(async (pet) => {
           try {
-            const imgRes = await axios.get(`http://localhost:5000/api/pets/${pet.id}/image`);
+            const imgRes = await axios.get(`${process.env.REACT_APP_API_URL}/api/pets/${pet.id}/image`);
             const images = imgRes.data.images || [];
             const sortedImages = images.sort((a, b) => (b.isPrimary ? 1 : 0) - (a.isPrimary ? 1 : 0));
             return { ...pet, images: sortedImages };
@@ -97,7 +97,7 @@ const config = { headers: { Authorization: `Bearer ${token}` } };
     setPetLogs([]);
     setLoadingLogs(true);
     try {
-      const res = await axios.get(`http://localhost:5000/api/pet-logs/${pet.id}`, config);
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/pet-logs/${pet.id}`, config);
       setPetLogs(res.data.logs || []);
     } catch (err) {
       console.error('Error fetching pet logs', err);
@@ -110,7 +110,7 @@ const config = { headers: { Authorization: `Bearer ${token}` } };
   const confirmAdoption = async (petId) => {
     setIsAdopting(true);
     try {
-      await axios.post('http://localhost:5000/api/adoption', { petId }, {
+      await axios.post(`${process.env.REACT_APP_API_URL}/api/adoption`, { petId }, {
         headers: { Authorization: `Bearer ${token}` }
       });
 
@@ -217,7 +217,7 @@ const config = { headers: { Authorization: `Bearer ${token}` } };
             >
               {primaryImage ? (
                 <img
-                  src={`http://localhost:5000/${primaryImage.imageUrl}`}
+                  src={`${process.env.REACT_APP_API_URL}/${primaryImage.imageUrl}`}
                   alt={pet.name}
                   className="pet-image"
                 />
@@ -276,7 +276,7 @@ const config = { headers: { Authorization: `Bearer ${token}` } };
                 modalPet.images.map((img, idx) => (
                   <img
                     key={img._id || idx}
-                    src={`http://localhost:5000/${img.imageUrl}`}
+                    src={`${process.env.REACT_APP_API_URL}/${img.imageUrl}`}
                     alt={`Photo ${idx + 1} of ${modalPet.name}`}
                     className="pet-image"
                   />

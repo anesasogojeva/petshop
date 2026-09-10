@@ -68,7 +68,7 @@ const VeterinarianDashboard = () => {
 
   const fetchVeterinarians = () => {
     axios
-      .get('http://localhost:5000/api/veterinarian', config)
+      .get(`${process.env.REACT_APP_API_URL}/api/veterinarian`, config)
       .then((res) => setVeterinarians(res.data))
       .catch((err) => {
         console.error('Error fetching veterinarians:', err);
@@ -117,7 +117,7 @@ const VeterinarianDashboard = () => {
   const handleSubmitForm = () => {
     if (isEditing && currentVeterinarianId) {
       axios
-        .put(`http://localhost:5000/api/veterinarian/${currentVeterinarianId}`, formData, config)
+        .put(`${process.env.REACT_APP_API_URL}/api/veterinarian/${currentVeterinarianId}`, formData, config)
         .then((res) => {
           setVeterinarians((prev) => prev.map((v) => (v.id === currentVeterinarianId ? res.data : v)));
           handleCloseForm();
@@ -130,7 +130,7 @@ const VeterinarianDashboard = () => {
     } else {
       const dataToSend = { ...formData, role: 'veterinarian' };
       axios
-        .post('http://localhost:5000/api/users/register', dataToSend, config)
+        .post(`${process.env.REACT_APP_API_URL}/api/users/register`, dataToSend, config)
         .then((res) => {
           if (res.data.veterinarian) {
             setVeterinarians((prev) => [...prev, res.data.veterinarian]);
@@ -149,7 +149,7 @@ const VeterinarianDashboard = () => {
 
   const handleDeleteVeterinarian = (id) => {
     axios
-      .delete(`http://localhost:5000/api/veterinarian/${id}`, config)
+      .delete(`${process.env.REACT_APP_API_URL}/api/veterinarian/${id}`, config)
       .then(() => {
         setVeterinarians((prev) => prev.filter((v) => v.id !== id));
         showMessage('Veterinarian deleted successfully.');
@@ -163,7 +163,7 @@ const VeterinarianDashboard = () => {
 
   const fetchVeterinarianImages = async (veterinarianId) => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/veterinarian/${veterinarianId}/image`, config);
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/veterinarian/${veterinarianId}/image`, config);
       setVeterinarianImages(res.data.images || []);
     } catch (err) {
       console.error('Error fetching veterinarian images:', err);
@@ -184,7 +184,7 @@ const VeterinarianDashboard = () => {
     formDataUpload.append('image', imageFile);
     try {
       await axios.post(
-        `http://localhost:5000/api/veterinarian/${currentVeterinarian.id}/image`,
+        `${process.env.REACT_APP_API_URL}/api/veterinarian/${currentVeterinarian.id}/image`,
         formDataUpload,
         { headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'multipart/form-data' } }
       );
@@ -199,7 +199,7 @@ const VeterinarianDashboard = () => {
   const handleDeleteImage = async (imageId) => {
     if (!currentVeterinarian?.id || !imageId) return;
     try {
-      await axios.delete(`http://localhost:5000/api/veterinarian/${currentVeterinarian.id}/image/${imageId}`, config);
+      await axios.delete(`${process.env.REACT_APP_API_URL}/api/veterinarian/${currentVeterinarian.id}/image/${imageId}`, config);
       await fetchVeterinarianImages(currentVeterinarian.id);
       showMessage('Image deleted successfully.');
     } catch (err) {

@@ -50,7 +50,7 @@ const RecordDashboard = () => {
   }, []);
 
   const fetchRecords = () => {
-    axios.get('http://localhost:5000/api/records', authHeader)
+    axios.get(`${process.env.REACT_APP_API_URL}/api/records`, authHeader)
       .then(res => setRecords(res.data.records || res.data))
       .catch(err => {
         console.error('Error fetching records:', err);
@@ -59,7 +59,7 @@ const RecordDashboard = () => {
   };
 
   const fetchUsers = () => {
-    axios.get('http://localhost:5000/api/users', authHeader)
+    axios.get(`${process.env.REACT_APP_API_URL}/api/users`, authHeader)
       .then(res => {
         const petOwners = res.data.filter(user => user.role === 'user');
         setUsers(petOwners);
@@ -72,7 +72,7 @@ const RecordDashboard = () => {
 
   useEffect(() => {
     if (formData.userId) {
-      axios.get(`http://localhost:5000/api/adoption/user/${formData.userId}`, authHeader)
+      axios.get(`${process.env.REACT_APP_API_URL}/api/adoption/user/${formData.userId}`, authHeader)
         .then(res => {
           const petsList = res.data.adoptions.map(adoption => adoption.Pet);
           setAdoptedPets(petsList);
@@ -89,7 +89,7 @@ const RecordDashboard = () => {
   }, [formData.userId]);
 
   const fetchVets = () => {
-    axios.get('http://localhost:5000/api/users', authHeader)
+    axios.get(`${process.env.REACT_APP_API_URL}/api/users`, authHeader)
       .then(res => {
         const onlyVets = res.data
           .filter(user => user.role === 'veterinarian' && user.Veterinarian)
@@ -130,8 +130,8 @@ const RecordDashboard = () => {
 
   const handleSubmitForm = () => {
     const request = isEditing
-      ? axios.put(`http://localhost:5000/api/records/${currentId}`, formData, authHeader)
-      : axios.post('http://localhost:5000/api/records', formData, authHeader);
+      ? axios.put(`${process.env.REACT_APP_API_URL}/api/records/${currentId}`, formData, authHeader)
+      : axios.post(`${process.env.REACT_APP_API_URL}/api/records`, formData, authHeader);
 
     request
       .then(() => {
@@ -146,7 +146,7 @@ const RecordDashboard = () => {
   };
 
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:5000/api/records/${id}`, authHeader)
+    axios.delete(`${process.env.REACT_APP_API_URL}/api/records/${id}`, authHeader)
       .then(() => {
         fetchRecords();
         showMessage('Record deleted successfully.');

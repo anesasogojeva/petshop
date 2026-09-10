@@ -26,7 +26,7 @@ const ReviewDashboard = () => {
   const authHeader = { headers: { Authorization: `Bearer ${token}` } };
 
   const fetchReviews = () => {
-    axios.get('http://localhost:5000/api/reviews', authHeader)
+    axios.get(`${process.env.REACT_APP_API_URL}/api/reviews`, authHeader)
       .then(res => setReviews(res.data))
       .catch(err => {
         console.error('Error fetching reviews:', err);
@@ -39,7 +39,7 @@ const ReviewDashboard = () => {
   }, []);
 
   const handleDeleteReview = (id) => {
-    axios.delete(`http://localhost:5000/api/reviews/${id}`, { headers: { Authorization: `Bearer ${token}` } })
+    axios.delete(`${process.env.REACT_APP_API_URL}/api/reviews/${id}`, { headers: { Authorization: `Bearer ${token}` } })
       .then(() => fetchReviews())
       .then(() => showMessage('Review deleted successfully.'))
       .catch(err => {

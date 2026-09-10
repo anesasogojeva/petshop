@@ -26,7 +26,7 @@ const OrderDashboard = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:5000/api/orders', authHeader)
+      .get(`${process.env.REACT_APP_API_URL}/api/orders`, authHeader)
       .then((res) => setOrders(res.data))
       .catch((err) => {
         console.error('Error fetching orders:', err);
@@ -36,7 +36,7 @@ const OrderDashboard = () => {
 
   const handleDeleteOrder = (id) => {
     axios
-      .delete(`http://localhost:5000/api/orders/${id}`, authHeader)
+      .delete(`${process.env.REACT_APP_API_URL}/api/orders/${id}`, authHeader)
       .then(() => {
         setOrders((prev) => prev.filter((order) => order.id !== id));
         showMessage('Order deleted successfully.');

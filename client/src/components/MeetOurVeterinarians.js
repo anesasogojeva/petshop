@@ -11,13 +11,13 @@ const MeetOurVeterinarians = () => {
   useEffect(() => {
     const fetchVets = async () => {
       try {
-        const { data } = await axios.get('http://localhost:5000/api/veterinarian');
+        const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/api/veterinarian`);
         setVets(data);
 
         const imagesResults = await Promise.all(
           data.map(vet =>
             axios
-              .get(`http://localhost:5000/api/veterinarian/${vet.id}/image`)
+              .get(`${process.env.REACT_APP_API_URL}/api/veterinarian/${vet.id}/image`)
               .then(res => ({
                 id: vet.id,
                 url: res.data?.images?.find(img => img.isPrimary)?.url || null,
@@ -28,7 +28,7 @@ const MeetOurVeterinarians = () => {
 
         const imagesMap = {};
         imagesResults.forEach(({ id, url }) => {
-          imagesMap[id] = url ? `http://localhost:5000/${url}` : '/default-vet-image.jpg';
+          imagesMap[id] = url ? `${process.env.REACT_APP_API_URL}/${url}` : '/default-vet-image.jpg';
         });
 
         setImagesByVet(imagesMap);

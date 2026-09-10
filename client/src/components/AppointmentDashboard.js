@@ -70,7 +70,7 @@ const AppointmentDashboard = () => {
   }, []);
 
   const fetchAppointments = () => {
-    axios.get('http://localhost:5000/api/appointments', authHeader)
+    axios.get(`${process.env.REACT_APP_API_URL}/api/appointments`, authHeader)
       .then(res => setAppointments(res.data.appointments))
       .catch(err => {
         console.error('Error fetching appointments:', err);
@@ -79,7 +79,7 @@ const AppointmentDashboard = () => {
   };
 
   const fetchPets = () => {
-    axios.get('http://localhost:5000/api/pets', authHeader)
+    axios.get(`${process.env.REACT_APP_API_URL}/api/pets`, authHeader)
       .then(res => setPets(res.data))
       .catch(err => {
         console.error('Error fetching pets:', err);
@@ -88,7 +88,7 @@ const AppointmentDashboard = () => {
   };
 
   const fetchVets = () => {
-    axios.get('http://localhost:5000/api/users', authHeader)
+    axios.get(`${process.env.REACT_APP_API_URL}/api/users`, authHeader)
       .then(res => {
         const onlyVets = res.data
           .filter(user => user.role === 'veterinarian' && user.Veterinarian)
@@ -102,7 +102,7 @@ const AppointmentDashboard = () => {
   };
 
   const fetchUsers = () => {
-    axios.get('http://localhost:5000/api/users', authHeader)
+    axios.get(`${process.env.REACT_APP_API_URL}/api/users`, authHeader)
       .then(res => {
         const petOwners = res.data.filter(user => user.role === 'user');
         setUsers(petOwners);
@@ -115,7 +115,7 @@ const AppointmentDashboard = () => {
 
   useEffect(() => {
     if (formData.userId) {
-      axios.get(`http://localhost:5000/api/adoption/user/${formData.userId}`, authHeader)
+      axios.get(`${process.env.REACT_APP_API_URL}/api/adoption/user/${formData.userId}`, authHeader)
         .then(res => {
           const petsList = res.data.adoptions.map(adoption => adoption.Pet);
           setAdoptedPets(petsList);
@@ -134,7 +134,7 @@ const AppointmentDashboard = () => {
   useEffect(() => {
     if (formData.date && formData.vetUserId) {
       setLoadingSlots(true);
-      axios.get('http://localhost:5000/api/slots/available', {
+      axios.get(`${process.env.REACT_APP_API_URL}/api/slots/available`, {
         params: { date: formData.date, userId: formData.vetUserId },
         headers: { Authorization: `Bearer ${token}` }
       })
@@ -224,8 +224,8 @@ const AppointmentDashboard = () => {
     };
 
     const request = isEditing && currentId
-      ? axios.put(`http://localhost:5000/api/appointments/${currentId}`, payload, authHeader)
-      : axios.post('http://localhost:5000/api/appointments', payload, authHeader);
+      ? axios.put(`${process.env.REACT_APP_API_URL}/api/appointments/${currentId}`, payload, authHeader)
+      : axios.post(`${process.env.REACT_APP_API_URL}/api/appointments`, payload, authHeader);
 
     request
       .then(() => {
@@ -241,7 +241,7 @@ const AppointmentDashboard = () => {
   };
 
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:5000/api/appointments/${id}`, authHeader)
+    axios.delete(`${process.env.REACT_APP_API_URL}/api/appointments/${id}`, authHeader)
       .then(() => {
         fetchAppointments();
         showMessage('Appointment deleted successfully.');
@@ -256,7 +256,7 @@ const AppointmentDashboard = () => {
   const handleStatusChange = (appointment, newStatus) => {
     if (newStatus === appointment.status) return;
     setUpdatingStatusId(appointment.id);
-    axios.patch(`http://localhost:5000/api/appointments/${appointment.id}/status`, { status: newStatus }, authHeader)
+    axios.patch(`${process.env.REACT_APP_API_URL}/api/appointments/${appointment.id}/status`, { status: newStatus }, authHeader)
       .then(() => {
         setAppointments(prev => prev.map(a => (a.id === appointment.id ? { ...a, status: newStatus } : a)));
         showMessage('Appointment status updated.');

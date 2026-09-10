@@ -58,7 +58,7 @@ const ProductList = () => {
   }, [searchQuery]);
   useEffect(() => {
     if (userId) {
-      axios.get(`http://localhost:5000/api/cart/user/${userId}`, authHeader)
+      axios.get(`${process.env.REACT_APP_API_URL}/api/cart/user/${userId}`, authHeader)
         .then(res => setCart(res.data))
         .catch(err => console.error('Failed to load cart:', err));
     }
@@ -80,7 +80,7 @@ const ProductList = () => {
       setLoading(true);
       setError(null);
       try {
-        const { data } = await axios.get('http://localhost:5000/api/products/filter', {
+        const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/api/products/filter`, {
           params: {
             search: debouncedSearch,
             category: categoryFilter,
@@ -95,7 +95,7 @@ const ProductList = () => {
 
         const imagesResults = await Promise.all(
           data.products.map(p =>
-            axios.get(`http://localhost:5000/api/products/${p.id}/image`)
+            axios.get(`${process.env.REACT_APP_API_URL}/api/products/${p.id}/image`)
               .then(r => ({ id: p.id, data: r.data }))
               .catch(() => ({ id: p.id, data: null }))
           )
@@ -105,7 +105,7 @@ const ProductList = () => {
         imagesResults.forEach(({ id, data }) => {
           if (data?.images) {
             const primary = data.images.find(img => img.isPrimary);
-            map[id] = primary ? `http://localhost:5000/${primary.url}` : null;
+            map[id] = primary ? `${process.env.REACT_APP_API_URL}/${primary.url}` : null;
           } else {
             map[id] = null;
           }
@@ -128,7 +128,7 @@ const ProductList = () => {
     setProductImages(null);
     setImageDialogOpen(true);
     try {
-      const { data } = await axios.get(`http://localhost:5000/api/products/${product.id}/image`);
+      const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/api/products/${product.id}/image`);
       setProductImages(data.images ?? []);
     } catch (e) {
       console.error(e);
@@ -171,14 +171,14 @@ const ProductList = () => {
     const existingItem = cart.find(item => item.productId === product.id);
     const newQuantity = existingItem ? existingItem.quantity + quantity : quantity;
 
-    axios.post(`http://localhost:5000/api/cart/user/${userId}`, {
+    axios.post(`${process.env.REACT_APP_API_URL}/api/cart/user/${userId}`, {
       userId,
       productId: product.id,
       quantity: newQuantity,
     }, authHeader)
       .then(() => {
         // Refresh cart after adding
-        return axios.get(`http://localhost:5000/api/cart/user/${userId}`, authHeader);
+        return axios.get(`${process.env.REACT_APP_API_URL}/api/cart/user/${userId}`, authHeader);
       })
       .then(res => setCart(res.data))
       .catch(err => console.error('Add to cart failed:', err));
@@ -189,14 +189,14 @@ const ProductList = () => {
 
   // Remove product from cart
   const removeFromCart = (itemId) => {
-    axios.delete(`http://localhost:5000/api/cart/${itemId}`, authHeader)
+    axios.delete(`${process.env.REACT_APP_API_URL}/api/cart/${itemId}`, authHeader)
       .then(() => setCart(prev => prev.filter(item => item.id !== itemId)))
       .catch(err => console.error('Remove from cart failed:', err));
   };
   const fetchCartItems = () => {
     if (userId) {
       axios
-        .get(`http://localhost:5000/api/cart/user/${userId}`, authHeader)
+        .get(`${process.env.REACT_APP_API_URL}/api/cart/user/${userId}`, authHeader)
         .then((res) => setCart(res.data))
         .catch((err) => console.error('Failed to load cart:', err));
     }
@@ -461,14 +461,14 @@ const ProductList = () => {
               {productImages.map(img => (
                 <img
                   key={img.id}
-                  src={`http://localhost:5000/${img.url}`}
+                  src={`${process.env.REACT_APP_API_URL}/${img.url}`}
                   alt={`Image ${img.id}`}
                   style={{
                     maxHeight: 200,
                     borderRadius: 10,
                     cursor: 'pointer',
                   }}
-                  onClick={() => window.open(`http://localhost:5000/${img.url}`, '_blank')}
+                  onClick={() => window.open(`${process.env.REACT_APP_API_URL}/${img.url}`, '_blank')}
                 />
               ))}
             </Box>

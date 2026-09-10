@@ -41,7 +41,7 @@ const CheckoutPage = () => {
     const fetchCartWithImages = async () => {
       try {
         const { data: cart } = await axios.get(
-          `http://localhost:5000/api/cart/user/${userId}`,
+          `${process.env.REACT_APP_API_URL}/api/cart/user/${userId}`,
           authHeader
         );
 
@@ -49,10 +49,10 @@ const CheckoutPage = () => {
           cart.map(async item => {
             try {
               const { data } = await axios.get(
-                `http://localhost:5000/api/products/${item.Product.id}/image`
+                `${process.env.REACT_APP_API_URL}/api/products/${item.Product.id}/image`
               );
               const imageUrl = data.images?.[0]?.url
-                ? `http://localhost:5000/${data.images[0].url}`
+                ? `${process.env.REACT_APP_API_URL}/${data.images[0].url}`
                 : '/default-image.jpg';
 
               return {
@@ -97,7 +97,7 @@ const CheckoutPage = () => {
   }, [userId]);
 
   const removeItem = (itemId) => {
-    axios.delete(`http://localhost:5000/api/cart/${itemId}`, authHeader)
+    axios.delete(`${process.env.REACT_APP_API_URL}/api/cart/${itemId}`, authHeader)
       .then(() => setCartItems(prev => prev.filter(item => item.id !== itemId)))
       .catch(err => {
         console.error('Failed to remove item:', err);
@@ -108,7 +108,7 @@ const CheckoutPage = () => {
   const createOrder = async () => {
     try {
       const res = await axios.post(
-        `http://localhost:5000/api/orders/${userId}`,
+        `${process.env.REACT_APP_API_URL}/api/orders/${userId}`,
         {}, 
         authHeader
       );
@@ -129,7 +129,7 @@ const CheckoutPage = () => {
     setIsCheckingOut(true);
     try {
       const res = await axios.post(
-        `http://localhost:5000/api/checkout/create-checkout-session/${userId}`,
+        `${process.env.REACT_APP_API_URL}/api/checkout/create-checkout-session/${userId}`,
         {},
         authHeader
       );

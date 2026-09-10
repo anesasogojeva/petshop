@@ -35,8 +35,11 @@ const path = require('path');
 const cors = require('cors');
 require('dotenv').config();
 app.use(express.json());
+const allowedOrigins = (process.env.CLIENT_URL || 'http://localhost:3000')
+  .split(',')
+  .map((origin) => origin.trim());
 app.use(cors({
-  origin: 'http://localhost:3000'  // only if using cookies/sessions
+  origin: allowedOrigins
 }));
 require('./models/Adoption');
 const sequelize = require('./config/dbConfig');

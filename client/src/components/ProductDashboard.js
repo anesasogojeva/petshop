@@ -37,7 +37,7 @@ const ProductDashboard = () => {
   const handleCloseMessage = () => setMessage({ ...message, open: false });
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/products', authHeader)
+    axios.get(`${process.env.REACT_APP_API_URL}/api/products`, authHeader)
       .then(res => setProducts(res.data))
       .catch(err => {
         console.error('Error fetching products:', err);
@@ -81,7 +81,7 @@ const ProductDashboard = () => {
     }
 
     if (isEditing && currentProductId) {
-      axios.put(`http://localhost:5000/api/products/${currentProductId}`, formData, authHeader)
+      axios.put(`${process.env.REACT_APP_API_URL}/api/products/${currentProductId}`, formData, authHeader)
         .then(res => {
           setProducts(prev => prev.map(p => (p.id === currentProductId ? res.data : p)));
           handleCloseForm();
@@ -92,7 +92,7 @@ const ProductDashboard = () => {
           showMessage('Error updating product.', 'error');
         });
     } else {
-      axios.post('http://localhost:5000/api/products', formData, authHeader)
+      axios.post(`${process.env.REACT_APP_API_URL}/api/products`, formData, authHeader)
         .then(res => {
           setProducts(prev => [...prev, res.data]);
           handleCloseForm();
@@ -106,7 +106,7 @@ const ProductDashboard = () => {
   };
 
   const handleDeleteProduct = (id) => {
-    axios.delete(`http://localhost:5000/api/products/${id}`, authHeader)
+    axios.delete(`${process.env.REACT_APP_API_URL}/api/products/${id}`, authHeader)
       .then(() => {
         setProducts(prev => prev.filter(p => p.id !== id));
         showMessage('Product deleted successfully.', 'success');
@@ -120,7 +120,7 @@ const ProductDashboard = () => {
 
   const fetchProductImages = async (productId) => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/products/${productId}/image`);
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/products/${productId}/image`);
       setProductImages(res.data.images || []);
     } catch (err) {
       console.error('Error fetching product images:', err);
@@ -140,7 +140,7 @@ const ProductDashboard = () => {
     const formDataUpload = new FormData();
     formDataUpload.append('image', imageFile);
     try {
-      await axios.post(`http://localhost:5000/api/products/${currentProduct.id}/image`, formDataUpload, {
+      await axios.post(`${process.env.REACT_APP_API_URL}/api/products/${currentProduct.id}/image`, formDataUpload, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
       await fetchProductImages(currentProduct.id);
@@ -154,7 +154,7 @@ const ProductDashboard = () => {
   const handleDeleteImage = async (imageId) => {
     if (!currentProduct?.id || !imageId) return;
     try {
-      await axios.delete(`http://localhost:5000/api/products/${currentProduct.id}/image/${imageId}`);
+      await axios.delete(`${process.env.REACT_APP_API_URL}/api/products/${currentProduct.id}/image/${imageId}`);
       await fetchProductImages(currentProduct.id);
       showMessage('Image deleted successfully.');
     } catch (err) {

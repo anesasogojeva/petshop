@@ -24,7 +24,7 @@ const ContactDashboard = () => {
 
   const fetchMessages = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/contact', authHeader);
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/contact`, authHeader);
       const data = await res.json();
       setMessages(data);
     } catch (err) {

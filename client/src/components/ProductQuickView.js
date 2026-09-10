@@ -45,7 +45,7 @@ export default function ProductQuickView({
 
     (async () => {
       try {
-        const { data } = await axios.get(`http://localhost:5000/api/products/${product.id}/image`);
+        const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/api/products/${product.id}/image`);
         if (!cancelled) setImages(data.images ?? []);
       } catch (err) {
         console.error(err);
@@ -55,7 +55,7 @@ export default function ProductQuickView({
 
     (async () => {
       try {
-        const { data } = await axios.get(`http://localhost:5000/api/reviews/product/${product.id}`);
+        const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/api/reviews/product/${product.id}`);
         if (!cancelled) {
           const total = data.reduce((sum, r) => sum + r.rating, 0);
           const avg = data.length ? total / data.length : 0;
@@ -77,7 +77,7 @@ export default function ProductQuickView({
   };
 
   const handleAddToCart = (product, quantity = 1) => {
-    axios.post(`http://localhost:5000/api/cart/user/${userId}`, {
+    axios.post(`${process.env.REACT_APP_API_URL}/api/cart/user/${userId}`, {
       userId,
       productId: product.id,
       quantity,
@@ -96,7 +96,7 @@ export default function ProductQuickView({
     setIsSubmittingRating(true);
     try {
       await axios.post(
-        `http://localhost:5000/api/reviews`,
+        `${process.env.REACT_APP_API_URL}/api/reviews`,
         {
           productId: product.id,
           rating: userRating,
@@ -108,7 +108,7 @@ export default function ProductQuickView({
       setUserRating(0);
       setUserComment('');
 
-      const { data } = await axios.get(`http://localhost:5000/api/reviews/product/${product.id}`);
+      const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/api/reviews/product/${product.id}`);
       const total = data.reduce((sum, r) => sum + r.rating, 0);
       const avg = data.length ? total / data.length : 0;
       setLocalProduct(prev => ({ ...prev, rating: avg }));
@@ -155,7 +155,7 @@ export default function ProductQuickView({
                 <>
                   <Box
                     component="img"
-                    src={`http://localhost:5000/${images[selectedImageIndex].url}`}
+                    src={`${process.env.REACT_APP_API_URL}/${images[selectedImageIndex].url}`}
                     alt={`${localProduct.name} image`}
                     sx={{
                       width: '100%',
@@ -172,7 +172,7 @@ export default function ProductQuickView({
                       <Box
                         key={idx}
                         component="img"
-                        src={`http://localhost:5000/${img.url}`}
+                        src={`${process.env.REACT_APP_API_URL}/${img.url}`}
                         alt={`Thumbnail ${idx + 1}`}
                         onClick={() => setSelectedImageIndex(idx)}
                         sx={{

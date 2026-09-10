@@ -81,8 +81,8 @@ const VetDash = () => {
     try {
       setLoading(true);
       const [appointmentsRes, recordsRes] = await Promise.all([
-        axios.get('http://localhost:5000/api/appointments/my-appointments', config),
-        axios.get('http://localhost:5000/api/records/my-records', config)
+        axios.get(`${process.env.REACT_APP_API_URL}/api/appointments/my-appointments`, config),
+        axios.get(`${process.env.REACT_APP_API_URL}/api/records/my-records`, config)
       ]);
       setAppointments(appointmentsRes.data.appointments || []);
       setRecords(recordsRes.data || []);
@@ -94,7 +94,7 @@ const VetDash = () => {
   };
 
   const fetchUsers = () => {
-    axios.get('http://localhost:5000/api/users', config)
+    axios.get(`${process.env.REACT_APP_API_URL}/api/users`, config)
       .then(res => {
         const petOwners = res.data.filter(user => user.role === 'user');
         setUsers(petOwners);
@@ -107,7 +107,7 @@ const VetDash = () => {
 
   useEffect(() => {
     if (newRecord.userId) {
-      axios.get(`http://localhost:5000/api/adoption/user/${newRecord.userId}`, config)
+      axios.get(`${process.env.REACT_APP_API_URL}/api/adoption/user/${newRecord.userId}`, config)
         .then(res => {
           const pets = res.data.adoptions.map(adoption => adoption.Pet);
           setAdoptedPets(pets);
@@ -125,7 +125,7 @@ const VetDash = () => {
 
   const fetchRecords = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/records/my-records', config);
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/records/my-records`, config);
       setRecords(res.data || []);
     } catch (err) {
       console.error('Error fetching records:', err);
@@ -142,7 +142,7 @@ const VetDash = () => {
     }
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/slots/available?date=${selectedDate}&userId=${userID}`, config
+        `${process.env.REACT_APP_API_URL}/api/slots/available?date=${selectedDate}&userId=${userID}`, config
       );
       setAvailableSlots(res.data.slots || []);
     } catch (err) {
@@ -153,7 +153,7 @@ const VetDash = () => {
 
   const handleCreateRecord = async () => {
     try {
-      await axios.post('http://localhost:5000/api/records', { ...newRecord }, config);
+      await axios.post(`${process.env.REACT_APP_API_URL}/api/records`, { ...newRecord }, config);
       setNewRecord({ date: '', notes: '', diagnosis: '', treatment: '', userId: '', petId: '' });
       setRecordModalOpen(false);
       fetchRecords();
@@ -168,7 +168,7 @@ const VetDash = () => {
     if (!selectedDate) return;
     try {
       await axios.post(
-        'http://localhost:5000/api/slots/create',
+        `${process.env.REACT_APP_API_URL}/api/slots/create`,
         { userId: userID, date: selectedDate },
         config
       );
@@ -190,7 +190,7 @@ const VetDash = () => {
 
   const handleDeleteAppointment = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/appointments/${id}`, config);
+      await axios.delete(`${process.env.REACT_APP_API_URL}/api/appointments/${id}`, config);
       setAppointments(appointments.filter((a) => a.id !== id));
       showMessage('Appointment deleted successfully.');
     } catch (error) {
@@ -201,7 +201,7 @@ const VetDash = () => {
 
   const handleDeleteRecord = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/records/${id}`, config);
+      await axios.delete(`${process.env.REACT_APP_API_URL}/api/records/${id}`, config);
       fetchRecords();
       showMessage('Record deleted successfully.');
     } catch (err) {
@@ -237,7 +237,7 @@ const VetDash = () => {
     }
 
     try {
-      const res = await axios.post('http://localhost:5000/api/chat', {
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/chat`, {
         userId: userID,
         userId2: user.id
       }, config);
@@ -257,7 +257,7 @@ const VetDash = () => {
 
   const fetchAllChats = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/chat', config);
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/chat`, config);
       const mapping = {};
       res.data.forEach(chat => {
         const otherUserId = chat.users.find(id => id !== userID);
@@ -284,7 +284,7 @@ const VetDash = () => {
 
   const fetchMessages = async (chatId) => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/message/${chatId}`, config);
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/message/${chatId}`, config);
       setChatMessages(prev => ({
         ...prev,
         [chatId]: res.data || []
@@ -298,7 +298,7 @@ const VetDash = () => {
   const sendMessage = async () => {
     if (!newMessage.trim() || !activeChatId) return;
     try {
-      const res = await axios.post('http://localhost:5000/api/message', {
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/message`, {
         chatId: activeChatId,
         content: newMessage.trim(),
       }, config);

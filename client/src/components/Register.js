@@ -26,7 +26,7 @@ const Register = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await axios.post('http://localhost:5000/api/users/register', formData);
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/users/register`, formData);
       setMessage(res.data.message);
       setSeverity('success');
     } catch (err) {

@@ -98,7 +98,7 @@ const UserDash = () => {
   useEffect(() => {
     const fetchVets = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/users', config);
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/users`, config);
         const onlyVets = res.data
           .filter(user => user.role === 'veterinarian' && user.Veterinarian)
           .map(user => ({
@@ -118,9 +118,9 @@ const UserDash = () => {
         await fetchVets();
 
         const [adoptionsRes, appointmentsRes, recordsRes] = await Promise.all([
-          axios.get('http://localhost:5000/api/adoption/my-adoptions', config),
-          axios.get('http://localhost:5000/api/appointments/my-appointments', config),
-          axios.get('http://localhost:5000/api/records/my-records', config)
+          axios.get(`${process.env.REACT_APP_API_URL}/api/adoption/my-adoptions`, config),
+          axios.get(`${process.env.REACT_APP_API_URL}/api/appointments/my-appointments`, config),
+          axios.get(`${process.env.REACT_APP_API_URL}/api/records/my-records`, config)
         ]);
 
         const adoptionsData = adoptionsRes.data.adoptions || [];
@@ -138,7 +138,7 @@ const UserDash = () => {
       }
 
       try {
-        const orderItemsRes = await axios.get(`http://localhost:5000/api/order-items/user/${userId}`, config);
+        const orderItemsRes = await axios.get(`${process.env.REACT_APP_API_URL}/api/order-items/user/${userId}`, config);
         setOrderItems(orderItemsRes.data || []);
       } catch (error) {
         // A 404 here just means the user has no orders yet — not an application error.
@@ -161,7 +161,7 @@ const UserDash = () => {
 
       setLoadingSlots(true);
       try {
-        const res = await axios.get('http://localhost:5000/api/slots/available', {
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/slots/available`, {
           params: {
             date: newAppointment.date,
             userId: newAppointment.vetUserId,
@@ -199,9 +199,9 @@ const UserDash = () => {
     };
 
     try {
-      await axios.post('http://localhost:5000/api/appointments', payload, config);
+      await axios.post(`${process.env.REACT_APP_API_URL}/api/appointments`, payload, config);
 
-      const appointmentsRes = await axios.get('http://localhost:5000/api/appointments/my-appointments', config);
+      const appointmentsRes = await axios.get(`${process.env.REACT_APP_API_URL}/api/appointments/my-appointments`, config);
       setAppointments(appointmentsRes.data.appointments || []);
 
       setBookingConfirmed({
@@ -258,7 +258,7 @@ const UserDash = () => {
 
   const handleDeleteAppointment = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/appointments/${id}`, config);
+      await axios.delete(`${process.env.REACT_APP_API_URL}/api/appointments/${id}`, config);
       setAppointments(appointments.filter((a) => a.id !== id));
       showMessage('Appointment deleted successfully.');
     } catch (error) {
@@ -268,7 +268,7 @@ const UserDash = () => {
   };
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/users', config)
+    axios.get(`${process.env.REACT_APP_API_URL}/api/users`, config)
       .then(res => {
         const filteredUsers = res.data.filter(user => user.id !== userId);
         setUsers(filteredUsers);
@@ -292,7 +292,7 @@ const UserDash = () => {
     }
 
     try {
-      const res = await axios.post('http://localhost:5000/api/chat', {
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/chat`, {
         userId: userId,
         userId2: user.id
       }, config);
@@ -312,7 +312,7 @@ const UserDash = () => {
 
   const fetchAllChats = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/chat', config);
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/chat`, config);
       const mapping = {};
       res.data.forEach(chat => {
         const otherUserId = chat.users.find(id => id !== userId);
@@ -339,7 +339,7 @@ const UserDash = () => {
 
   const fetchMessages = async (chatId) => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/message/${chatId}`, config);
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/message/${chatId}`, config);
       setChatMessages(prev => ({
         ...prev,
         [chatId]: res.data || []
@@ -353,7 +353,7 @@ const UserDash = () => {
   const sendMessage = async () => {
     if (!newMessage.trim() || !activeChatId) return;
     try {
-      const res = await axios.post('http://localhost:5000/api/message', {
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/message`, {
         chatId: activeChatId,
         content: newMessage.trim(),
       }, config);
@@ -375,7 +375,7 @@ const UserDash = () => {
     }
 
     try {
-      const res = await axios.get(`http://localhost:5000/api/order-items/user/${userId}`, config);
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/order-items/user/${userId}`, config);
       const userOrderItems = res.data || [];
 
       const hasPurchased = userOrderItems.some(item => item.productId === selectedProductId);
@@ -385,7 +385,7 @@ const UserDash = () => {
         return;
       }
 
-      await axios.post('http://localhost:5000/api/reviews', {
+      await axios.post(`${process.env.REACT_APP_API_URL}/api/reviews`, {
         productId: selectedProductId,
         rating: newReview.rating,
         comment: newReview.comment
@@ -423,19 +423,19 @@ const UserDash = () => {
 
   const handleSubmit = async () => {
     try {
-      const petRes = await axios.post('http://localhost:5000/api/pets', formData, config);
+      const petRes = await axios.post(`${process.env.REACT_APP_API_URL}/api/pets`, formData, config);
       const newPetId = petRes.data.id;
 
       if (imageFile) {
         const imgForm = new FormData();
         imgForm.append('image', imageFile);
-        await axios.post(`http://localhost:5000/api/pets/${newPetId}/image`, imgForm, {
+        await axios.post(`${process.env.REACT_APP_API_URL}/api/pets/${newPetId}/image`, imgForm, {
           headers: { 'Content-Type': 'multipart/form-data' }
         });
       }
 
       if (logNote.trim()) {
-        await axios.post(`http://localhost:5000/api/pet-logs/${newPetId}`, {
+        await axios.post(`${process.env.REACT_APP_API_URL}/api/pet-logs/${newPetId}`, {
           petId: newPetId,
           note: logNote
         });

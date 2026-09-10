@@ -56,7 +56,7 @@ const AboutUs = () => {
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/reviews");
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/reviews`);
 
         const filtered = response.data.filter((review) => {
           const comment = review.comment?.toLowerCase() || "";

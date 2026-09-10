@@ -46,7 +46,7 @@ const UserDashboard = () => {
   }, []);
 
   const fetchUsers = () => {
-    axios.get('http://localhost:5000/api/users', config)
+    axios.get(`${process.env.REACT_APP_API_URL}/api/users`, config)
       .then((res) => setUsers(res.data))
       .catch((err) => {
         console.error('Error fetching users:', err);
@@ -94,7 +94,7 @@ const UserDashboard = () => {
 
   const handleSubmitForm = () => {
     if (isEditing && currentUserId) {
-      axios.put(`http://localhost:5000/api/users/${currentUserId}`, formData, config)
+      axios.put(`${process.env.REACT_APP_API_URL}/api/users/${currentUserId}`, formData, config)
         .then((res) => {
           setUsers((prev) => prev.map((user) => (user.id === currentUserId ? res.data : user)));
           handleCloseForm();
@@ -105,7 +105,7 @@ const UserDashboard = () => {
           showMessage('Error updating user.', 'error');
         });
     } else {
-      axios.post('http://localhost:5000/api/users/register', formData, config)
+      axios.post(`${process.env.REACT_APP_API_URL}/api/users/register`, formData, config)
         .then((res) => {
           setUsers((prev) => [...prev, res.data.user]);
           handleCloseForm();
@@ -119,7 +119,7 @@ const UserDashboard = () => {
   };
 
   const handleDeleteUser = (id) => {
-    axios.delete(`http://localhost:5000/api/users/${id}`, config)
+    axios.delete(`${process.env.REACT_APP_API_URL}/api/users/${id}`, config)
       .then(() => {
         setUsers((prev) => prev.filter((user) => user.id !== id));
         showMessage('User deleted successfully.');

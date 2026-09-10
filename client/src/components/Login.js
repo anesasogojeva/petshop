@@ -51,7 +51,7 @@ const Login = () => {
 
     setLoading(true);
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/login', loginData);
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/auth/login`, loginData);
       localStorage.setItem('accessToken', res.data.accessToken);
 
       const decoded = jwtDecode(res.data.accessToken);
@@ -93,7 +93,7 @@ const Login = () => {
     e.preventDefault();
     setForgotLoading(true);
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/forgot-password', {
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/auth/forgot-password`, {
         email: forgotEmail,
       });
       setForgotMessage(res.data.message || 'Reset link sent to your email.');

@@ -29,7 +29,7 @@ const ChangePasswordPage = () => {
     setMessage('');
     setLoading(true);
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/login', loginData);
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/auth/login`, loginData);
       localStorage.setItem('accessToken', res.data.accessToken);
       setIsAuthenticated(true);
     } catch (err) {
@@ -58,7 +58,7 @@ const ChangePasswordPage = () => {
     setLoading(true);
     try {
       const res = await axios.post(
-        'http://localhost:5000/api/auth/change-password',
+        `${process.env.REACT_APP_API_URL}/api/auth/change-password`,
         changeData,
         { headers: { Authorization: `Bearer ${token}` } }
       );

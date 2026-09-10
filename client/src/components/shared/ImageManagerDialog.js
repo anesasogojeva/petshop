@@ -60,7 +60,7 @@ const ImageManagerDialog = ({
               <Box key={img.id || img._id} sx={{ position: 'relative' }}>
                 <Box
                   component="img"
-                  src={`http://localhost:5000/${img[imageUrlKey]}`}
+                  src={`${process.env.REACT_APP_API_URL}/${img[imageUrlKey]}`}
                   alt=""
                   sx={{ width: 100, height: 100, objectFit: 'cover', borderRadius: 1, border: '1px solid', borderColor: 'divider' }}
                 />

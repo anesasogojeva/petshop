@@ -43,7 +43,7 @@ const PetDashboard = () => {
   const authHeader = { headers: { Authorization: `Bearer ${token}` } };
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/pets', authHeader)
+    axios.get(`${process.env.REACT_APP_API_URL}/api/pets`, authHeader)
       .then(res => setPets(res.data))
       .catch(err => {
         console.error('Error fetching pets:', err);
@@ -84,7 +84,7 @@ const PetDashboard = () => {
   const handleSubmitForm = () => {
     const { adopted, ...dataToSubmit } = formData;
     if (isEditing && currentPetId) {
-      axios.put(`http://localhost:5000/api/pets/${currentPetId}`, dataToSubmit, authHeader)
+      axios.put(`${process.env.REACT_APP_API_URL}/api/pets/${currentPetId}`, dataToSubmit, authHeader)
         .then(res => {
           setPets(prev => prev.map(p => p.id === currentPetId ? res.data : p));
           handleCloseForm();
@@ -95,7 +95,7 @@ const PetDashboard = () => {
           showMessage('Error updating pet.', 'error');
         });
     } else {
-      axios.post('http://localhost:5000/api/pets', formData, authHeader)
+      axios.post(`${process.env.REACT_APP_API_URL}/api/pets`, formData, authHeader)
         .then(res => {
           setPets(prev => [...prev, res.data]);
           handleCloseForm();
@@ -109,7 +109,7 @@ const PetDashboard = () => {
   };
 
   const handleDeletePet = (id) => {
-    axios.delete(`http://localhost:5000/api/pets/${id}`, authHeader)
+    axios.delete(`${process.env.REACT_APP_API_URL}/api/pets/${id}`, authHeader)
       .then(() => {
         setPets(prev => prev.filter(p => p.id !== id));
         showMessage('Pet deleted successfully.');
@@ -123,7 +123,7 @@ const PetDashboard = () => {
 
   const handleOpenLogs = (pet) => {
     setLogPet(pet);
-    axios.get(`http://localhost:5000/api/pet-logs/${pet.id}`)
+    axios.get(`${process.env.REACT_APP_API_URL}/api/pet-logs/${pet.id}`)
       .then(res => {
         setCurrentLogs(res.data.logs || []);
         setLogDialogOpen(true);
@@ -138,7 +138,7 @@ const PetDashboard = () => {
 
   const fetchPetImages = async (petId) => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/pets/${petId}/image`);
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/pets/${petId}/image`);
       setPetImages(res.data.images || []);
     } catch (err) {
       console.error('Error fetching images:', err);
@@ -155,7 +155,7 @@ const PetDashboard = () => {
 
   const handleAddLog = () => {
     if (!logPet?.id) return;
-    axios.post(`http://localhost:5000/api/pet-logs/${logPet.id}`, { petId: logPet.id, note: logNote })
+    axios.post(`${process.env.REACT_APP_API_URL}/api/pet-logs/${logPet.id}`, { petId: logPet.id, note: logNote })
       .then(res => {
         setCurrentLogs(res.data.logs);
         setLogNote('');
@@ -172,7 +172,7 @@ const PetDashboard = () => {
     const formDataUpload = new FormData();
     formDataUpload.append('image', imageFile);
     try {
-      await axios.post(`http://localhost:5000/api/pets/${currentPet.id}/image`, formDataUpload, {
+      await axios.post(`${process.env.REACT_APP_API_URL}/api/pets/${currentPet.id}/image`, formDataUpload, {
         headers: { Authorization: `Bearer ${token}` },
       });
       await fetchPetImages(currentPet.id);
@@ -186,7 +186,7 @@ const PetDashboard = () => {
   const handleDeleteImage = async (imageId) => {
     if (!currentPet?.id || !imageId) return;
     try {
-      await axios.delete(`http://localhost:5000/api/pets/${currentPet.id}/image/${imageId}`);
+      await axios.delete(`${process.env.REACT_APP_API_URL}/api/pets/${currentPet.id}/image/${imageId}`);
       await fetchPetImages(currentPet.id);
       showMessage('Image deleted successfully.');
     } catch (err) {

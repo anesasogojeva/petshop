@@ -21,7 +21,7 @@ function SuccessPage() {
         const token = localStorage.getItem('accessToken');
         const userId = localStorage.getItem('userId');
 
-        await fetch('http://localhost:5000/api/stripe/confirm-email', {
+        await fetch(`${process.env.REACT_APP_API_URL}/api/stripe/confirm-email`, {
           method: 'POST',
           headers: {
             Authorization: `Bearer ${token}`,

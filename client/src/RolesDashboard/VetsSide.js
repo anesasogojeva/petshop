@@ -25,7 +25,7 @@ const VetsSide = ({ selectedTab, setSelectedTab, onOpenRecordModal, onOpenSlotMo
     const refreshToken = localStorage.getItem('refreshToken');
     try {
       if (refreshToken) {
-        await axios.post('http://localhost:5000/api/auth/logout', { refreshToken });
+        await axios.post(`${process.env.REACT_APP_API_URL}/api/auth/logout`, { refreshToken });
       }
     } catch (error) {
       console.error('Logout error:', error);

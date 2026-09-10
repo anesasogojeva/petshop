@@ -23,7 +23,7 @@ const Contact = () => {
     e.preventDefault();
     setStatus('sending');
     try {
-      await fetch('http://localhost:5000/api/contact', {
+      await fetch(`${process.env.REACT_APP_API_URL}/api/contact`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
