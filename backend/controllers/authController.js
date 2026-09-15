@@ -461,7 +461,8 @@ exports.forgotPassword = async (req, res) => {
     user.tokenExpiry = new Date(Date.now() + 15 * 60 * 1000);
     await user.save();
 
-    const resetUrl = `http://localhost:3000/reset-password?token=${token}`; // frontend route
+    const clientUrl = (process.env.CLIENT_URL || 'http://localhost:3000').split(',')[0].trim();
+    const resetUrl = `${clientUrl}/reset-password?token=${token}`; // frontend route
 
     await sendEmail(
       user.email,

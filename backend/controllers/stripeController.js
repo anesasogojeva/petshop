@@ -4,6 +4,8 @@ const Product = require('../models/Product');
 const User = require('../models/User');
 const { sendEmail } = require('../utils/mailService');
 
+const CLIENT_URL = (process.env.CLIENT_URL || 'http://localhost:3000').split(',')[0].trim();
+
 exports.createCheckoutSession = async (req, res) => {
   const { userId } = req.params;
 
@@ -45,8 +47,8 @@ exports.createCheckoutSession = async (req, res) => {
       customer_email: user.email,
       line_items,
       mode: 'payment',
-      success_url: 'http://localhost:3000/success',
-      cancel_url: 'http://localhost:3000/cancel',
+      success_url: `${CLIENT_URL}/success`,
+      cancel_url: `${CLIENT_URL}/cancel`,
     });
     const discountedTotal = cartItems.reduce((acc, item) => {
       const price = item.Product.price;
