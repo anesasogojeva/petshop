@@ -1201,7 +1201,7 @@ const UserDash = () => {
             <Select name="type" value={formData.type} label="Type" onChange={handleFormChange}>
               <MenuItem value="Dog">Dog</MenuItem>
               <MenuItem value="Cat">Cat</MenuItem>
-              <MenuItem value="Parrot">Parrot</MenuItem>
+              <MenuItem value="Bird">Bird</MenuItem>
               <MenuItem value="Turtle">Turtle</MenuItem>
             </Select>
           </FormControl>

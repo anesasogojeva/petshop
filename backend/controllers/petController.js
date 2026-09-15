@@ -3,10 +3,11 @@ const Pet = require('../models/Pet');
 // CREATE pet
 exports.createPet = async (req, res) => {
   try {
-    const { name, breed, age,gender,type ,adopted, description } = req.body;     
+    const { name, breed, age,gender,type ,adopted, description } = req.body;
     const normalizedType = type?.toLowerCase().trim();
+    const normalizedGender = gender?.toLowerCase().trim();
 
-    const newPet = await Pet.create({ name, breed, age,gender,type: normalizedType, adopted, description });
+    const newPet = await Pet.create({ name, breed, age, gender: normalizedGender, type: normalizedType, adopted, description });
     res.status(201).json(newPet);
   } catch (error) {
     res.status(500).json({ error: 'Failed to create pet', details: error.message });
@@ -42,6 +43,7 @@ exports.updatePet = async (req, res) => {
   const { id } = req.params;
   const { name, breed, age,gender,type, adopted, description } = req.body;
    const normalizedType = type?.toLowerCase().trim();
+   const normalizedGender = gender?.toLowerCase().trim();
   try {
     const pet = await Pet.findByPk(id);
     if (!pet) {
@@ -50,7 +52,8 @@ exports.updatePet = async (req, res) => {
     pet.name = name || pet.name;
     pet.breed = breed || pet.breed;
     pet.age = age || pet.age;
-    pet.gender = gender || pet.gender;     pet.type = normalizedType || pet.type;
+    pet.gender = normalizedGender || pet.gender;
+    pet.type = normalizedType || pet.type;
     pet.adopted = adopted !== undefined ? adopted : pet.adopted;
     pet.description = description || pet.description;
     await pet.save();

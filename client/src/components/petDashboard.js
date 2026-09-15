@@ -341,7 +341,7 @@ const PetDashboard = () => {
             <Select labelId="type-label" name="type" value={formData.type} label="Type" onChange={handleFormChange}>
               <MenuItem value="Dog">Dog</MenuItem>
               <MenuItem value="Cat">Cat</MenuItem>
-              <MenuItem value="Parrot">Parrot</MenuItem>
+              <MenuItem value="Bird">Bird</MenuItem>
               <MenuItem value="Turtle">Turtle</MenuItem>
               <MenuItem value="Other">Other</MenuItem>
             </Select>
