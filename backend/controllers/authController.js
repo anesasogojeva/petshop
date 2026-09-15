@@ -6,6 +6,9 @@ const User = require('../models/User');
 const passwordValidator = require('../validators/passwordValidator'); // adjust path as needed
 const { sendEmail } = require('../utils/mailService'); // adjust path as needed
 
+const CLIENT_URL = (process.env.CLIENT_URL || 'http://localhost:3000').split(',')[0].trim();
+const LOGO_URL = `${CLIENT_URL}/logoLart.png`;
+
 
 
 
@@ -249,7 +252,7 @@ exports.changePassword = async (req, res) => {
 </head>
 <body>
   <div class="email-container">
-    <img src="cid:pawlogo" alt="Paw Logo" class="logo" />
+    <img src="${LOGO_URL}" alt="Paw Logo" class="logo" />
 
     <div class="header">Pet Care App</div>
     <div class="content">
@@ -418,7 +421,7 @@ exports.confirmPasswordChange = async (req, res) => {
 </head>
 <body>
   <div class="email-container">
-    <img src="cid:pawlogo" alt="Paw Logo" class="logo" />
+    <img src="${LOGO_URL}" alt="Paw Logo" class="logo" />
     <div class="header">
       <span class="emoji">🎉</span> Password Successfully Changed <span class="emoji">🔐</span>
     </div>
@@ -461,8 +464,7 @@ exports.forgotPassword = async (req, res) => {
     user.tokenExpiry = new Date(Date.now() + 15 * 60 * 1000);
     await user.save();
 
-    const clientUrl = (process.env.CLIENT_URL || 'http://localhost:3000').split(',')[0].trim();
-    const resetUrl = `${clientUrl}/reset-password?token=${token}`; // frontend route
+    const resetUrl = `${CLIENT_URL}/reset-password?token=${token}`; // frontend route
 
     await sendEmail(
       user.email,
@@ -520,7 +522,7 @@ exports.forgotPassword = async (req, res) => {
 </head>
 <body>
   <div class="container">
-    <img src="cid:pawlogo" alt="Paw Logo" style="width: 80px; height: auto; margin-bottom: 20px;" />
+    <img src="${LOGO_URL}" alt="Paw Logo" style="width: 80px; height: auto; margin-bottom: 20px;" />
 
     <div class="header">Reset Your Password</div>
 

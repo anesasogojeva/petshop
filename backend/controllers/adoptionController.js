@@ -4,6 +4,9 @@ const User = require('../models/User');
 const nodemailer = require('nodemailer');
 const { sendEmail } = require('../utils/mailService');
 
+const CLIENT_URL = (process.env.CLIENT_URL || 'http://localhost:3000').split(',')[0].trim();
+const LOGO_URL = `${CLIENT_URL}/logoLart.png`;
+
 exports.createAdoption = async (req, res) => {
   try {
     const userId = req.user.role === 'admin' && req.body.userId ? req.body.userId : req.user.id;
@@ -81,7 +84,7 @@ exports.createAdoption = async (req, res) => {
 </head>
 <body>
   <div class="email-container">
-    <img src="cid:pawlogo" alt="Paw Logo" class="logo" />
+    <img src="${LOGO_URL}" alt="Paw Logo" class="logo" />
     <div class="header">Pet Care App</div>
     <div class="content">
       Hi <strong>${user.name}</strong>,<br/><br/>

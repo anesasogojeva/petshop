@@ -5,6 +5,7 @@ const User = require('../models/User');
 const { sendEmail } = require('../utils/mailService');
 
 const CLIENT_URL = (process.env.CLIENT_URL || 'http://localhost:3000').split(',')[0].trim();
+const LOGO_URL = `${CLIENT_URL}/logoLart.png`;
 
 exports.createCheckoutSession = async (req, res) => {
   const { userId } = req.params;
@@ -130,7 +131,7 @@ exports.createCheckoutSession = async (req, res) => {
 </head>
 <body>
   <div class="email-container">
-    <img src="cid:pawlogo" alt="Paw Logo" class="logo" />
+    <img src="${LOGO_URL}" alt="Paw Logo" class="logo" />
     <div class="header">Pet Care App</div>
     <div class="content">
       Thank you for your order! You’re about to complete your payment.
