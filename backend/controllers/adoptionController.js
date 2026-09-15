@@ -23,6 +23,8 @@ exports.createAdoption = async (req, res) => {
     pet.adopted = true;
     await pet.save();
 
+    res.status(201).json({ message: 'Pet adopted successfully', adoption });
+
     const user = await User.findByPk(userId);
     if (user && user.email) {
       const subject = `🎉 Welcome ${pet.name} to your family!`;
@@ -98,13 +100,17 @@ exports.createAdoption = async (req, res) => {
 
 
 
-      await sendEmail(user.email, subject, text, html);
+      try {
+        await sendEmail(user.email, subject, text, html);
+      } catch (emailErr) {
+        console.error('Failed to send adoption confirmation email:', emailErr);
+      }
     }
-
-    res.status(201).json({ message: 'Pet adopted successfully', adoption });
   } catch (error) {
     console.error('Adoption creation error:', error);
-    res.status(500).json({ message: 'Failed to create adoption', error: error.message });
+    if (!res.headersSent) {
+      res.status(500).json({ message: 'Failed to create adoption', error: error.message });
+    }
   }
 };
 

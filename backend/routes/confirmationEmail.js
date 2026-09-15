@@ -89,7 +89,14 @@ router.post('/confirm-email', async (req, res) => {
       console.error('❌ Failed to create order record:', orderErr);
     }
 
-    await sendEmail(
+    // Clear the cart and respond right away - the receipt email is best-effort
+    // and must never block or fail the response for an already-completed order.
+    await CartItem.destroy({ where: { UserId: userId } });
+    console.log('🗑️ Cart cleared for userId:', userId);
+    res.status(200).json({ message: 'Order recorded' });
+
+    try {
+      await sendEmail(
       user.email,
       '🧾 Your Pet Care Order Receipt',
       'Here is a summary of your recent order.',
@@ -176,21 +183,17 @@ router.post('/confirm-email', async (req, res) => {
   </body>
   </html>
   `
-    );
-
-
-    console.log('✅ Email sent successfully');
-
-    // Clear user's cart after email sent
-    await CartItem.destroy({ where: { UserId: userId } });
-
-    console.log('🗑️ Cart cleared for userId:', userId);
-
-    res.status(200).json({ message: 'Receipt email sent' });
+      );
+      console.log('✅ Email sent successfully');
+    } catch (emailErr) {
+      console.error('❌ Failed to send receipt email (order was still recorded):', emailErr);
+    }
 
   } catch (error) {
     console.error('❌ Error sending receipt email:', error);
-    res.status(500).json({ error: 'Failed to send receipt email' });
+    if (!res.headersSent) {
+      res.status(500).json({ error: 'Failed to send receipt email' });
+    }
   }
 });
 

@@ -50,6 +50,8 @@ exports.createCheckoutSession = async (req, res) => {
       success_url: `${CLIENT_URL}/success`,
       cancel_url: `${CLIENT_URL}/cancel`,
     });
+    res.json({ url: session.url });
+
     const discountedTotal = cartItems.reduce((acc, item) => {
       const price = item.Product.price;
       const discount = item.Product.discount || 0;
@@ -57,7 +59,9 @@ exports.createCheckoutSession = async (req, res) => {
       return acc + discountedPrice * item.quantity;
     }, 0).toFixed(2);
 
-    // Optional early email (not recommended for final confirmation)
+    // Optional early email (not recommended for final confirmation) - best-effort,
+    // must not block or fail the response since the Stripe session already exists.
+    try {
     await sendEmail(
       user.email,
       '🧾 Your Pet Care Order is Being Processed',
@@ -146,13 +150,13 @@ exports.createCheckoutSession = async (req, res) => {
 </html>
   `
     );
-
-
-
-
-    res.json({ url: session.url });
+    } catch (emailErr) {
+      console.error('Failed to send early checkout email:', emailErr);
+    }
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: 'Failed to create Stripe session' });
+    if (!res.headersSent) {
+      res.status(500).json({ error: 'Failed to create Stripe session' });
+    }
   }
 };
