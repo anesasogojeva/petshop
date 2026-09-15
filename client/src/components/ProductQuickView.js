@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { resolveImageUrl } from '../utils/resolveImageUrl';
 import {
   Dialog, DialogTitle, DialogContent,
   IconButton, Typography, Box, Stack, Button,
@@ -155,7 +156,7 @@ export default function ProductQuickView({
                 <>
                   <Box
                     component="img"
-                    src={`${process.env.REACT_APP_API_URL}/${images[selectedImageIndex].url}`}
+                    src={resolveImageUrl(images[selectedImageIndex].url)}
                     alt={`${localProduct.name} image`}
                     sx={{
                       width: '100%',
@@ -172,7 +173,7 @@ export default function ProductQuickView({
                       <Box
                         key={idx}
                         component="img"
-                        src={`${process.env.REACT_APP_API_URL}/${img.url}`}
+                        src={resolveImageUrl(img.url)}
                         alt={`Thumbnail ${idx + 1}`}
                         onClick={() => setSelectedImageIndex(idx)}
                         sx={{

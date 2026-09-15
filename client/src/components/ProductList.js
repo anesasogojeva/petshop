@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { resolveImageUrl } from '../utils/resolveImageUrl';
 import {
   Dialog, DialogTitle, DialogContent,
   Typography, Box, CircularProgress, TextField, Divider,
@@ -105,7 +106,7 @@ const ProductList = () => {
         imagesResults.forEach(({ id, data }) => {
           if (data?.images) {
             const primary = data.images.find(img => img.isPrimary);
-            map[id] = primary ? `${process.env.REACT_APP_API_URL}/${primary.url}` : null;
+            map[id] = primary ? resolveImageUrl(primary.url) : null;
           } else {
             map[id] = null;
           }
@@ -461,14 +462,14 @@ const ProductList = () => {
               {productImages.map(img => (
                 <img
                   key={img.id}
-                  src={`${process.env.REACT_APP_API_URL}/${img.url}`}
+                  src={resolveImageUrl(img.url)}
                   alt={`Image ${img.id}`}
                   style={{
                     maxHeight: 200,
                     borderRadius: 10,
                     cursor: 'pointer',
                   }}
-                  onClick={() => window.open(`${process.env.REACT_APP_API_URL}/${img.url}`, '_blank')}
+                  onClick={() => window.open(resolveImageUrl(img.url), '_blank')}
                 />
               ))}
             </Box>

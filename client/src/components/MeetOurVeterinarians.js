@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../CSS/MeetOurVeterinarians.css';
+import { resolveImageUrl } from '../utils/resolveImageUrl';
 
 const MeetOurVeterinarians = () => {
   const [vets, setVets] = useState([]);
@@ -28,7 +29,7 @@ const MeetOurVeterinarians = () => {
 
         const imagesMap = {};
         imagesResults.forEach(({ id, url }) => {
-          imagesMap[id] = url ? `${process.env.REACT_APP_API_URL}/${url}` : '/default-vet-image.jpg';
+          imagesMap[id] = url ? resolveImageUrl(url) : '/default-vet-image.jpg';
         });
 
         setImagesByVet(imagesMap);

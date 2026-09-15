@@ -3,6 +3,7 @@ import { Dialog, DialogTitle, DialogContent, DialogActions, Button, Box, IconBut
 import DeleteIcon from '@mui/icons-material/Delete';
 import PhotoLibraryIcon from '@mui/icons-material/PhotoLibrary';
 import EmptyState from './EmptyState';
+import { resolveImageUrl } from '../../utils/resolveImageUrl';
 
 /**
  * Shared upload/list/delete image manager, used by the Veterinarian,
@@ -60,7 +61,7 @@ const ImageManagerDialog = ({
               <Box key={img.id || img._id} sx={{ position: 'relative' }}>
                 <Box
                   component="img"
-                  src={`${process.env.REACT_APP_API_URL}/${img[imageUrlKey]}`}
+                  src={resolveImageUrl(img[imageUrlKey])}
                   alt=""
                   sx={{ width: 100, height: 100, objectFit: 'cover', borderRadius: 1, border: '1px solid', borderColor: 'divider' }}
                 />

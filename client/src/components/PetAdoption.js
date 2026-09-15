@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../CSS/PetAdoption.css';
+import { resolveImageUrl } from '../utils/resolveImageUrl';
 import { jwtDecode } from "jwt-decode";
 import Pagination from '@mui/material/Pagination';
 import Box from '@mui/material/Box';
@@ -217,7 +218,7 @@ const config = { headers: { Authorization: `Bearer ${token}` } };
             >
               {primaryImage ? (
                 <img
-                  src={`${process.env.REACT_APP_API_URL}/${primaryImage.imageUrl}`}
+                  src={resolveImageUrl(primaryImage.imageUrl)}
                   alt={pet.name}
                   className="pet-image"
                 />
@@ -276,7 +277,7 @@ const config = { headers: { Authorization: `Bearer ${token}` } };
                 modalPet.images.map((img, idx) => (
                   <img
                     key={img._id || idx}
-                    src={`${process.env.REACT_APP_API_URL}/${img.imageUrl}`}
+                    src={resolveImageUrl(img.imageUrl)}
                     alt={`Photo ${idx + 1} of ${modalPet.name}`}
                     className="pet-image"
                   />

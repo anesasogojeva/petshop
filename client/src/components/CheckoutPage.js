@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { resolveImageUrl } from '../utils/resolveImageUrl';
 import {
   Box,
   Typography,
@@ -52,7 +53,7 @@ const CheckoutPage = () => {
                 `${process.env.REACT_APP_API_URL}/api/products/${item.Product.id}/image`
               );
               const imageUrl = data.images?.[0]?.url
-                ? `${process.env.REACT_APP_API_URL}/${data.images[0].url}`
+                ? resolveImageUrl(data.images[0].url)
                 : '/default-image.jpg';
 
               return {
