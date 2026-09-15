@@ -87,6 +87,7 @@ export default function ProductQuickView({
         if (onCartUpdated) {
           onCartUpdated();
         }
+        onClose();
       })
       .catch(err => console.error('Add to cart failed:', err));
   };
