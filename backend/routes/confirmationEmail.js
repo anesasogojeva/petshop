@@ -1,9 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const { sendEmail } = require('../utils/mailService');
+const sequelize = require('../config/dbConfig');
 const User = require('../models/User');
 const CartItem = require('../models/CartItem');
 const Product = require('../models/Product');
+const Order = require('../models/Order');
+const OrderItem = require('../models/OrderItem');
 
 router.post('/confirm-email', async (req, res) => {
   console.log('📩 /confirm-email called with body:', req.body);
@@ -57,6 +60,34 @@ router.post('/confirm-email', async (req, res) => {
     }, 0).toFixed(2);
 
     console.log(`📧 Sending email to ${user.email} with total $${total}`);
+
+    // Persist the order now that payment has succeeded, before it's lost when the cart clears
+    const transaction = await sequelize.transaction();
+    try {
+      const order = await Order.create(
+        { userId, totalAmount: parseFloat(total), status: 'completed' },
+        { transaction }
+      );
+
+      for (const item of cartItems) {
+        const discountedPrice = item.Product.price * (1 - (item.Product.discount || 0));
+        await OrderItem.create(
+          {
+            orderId: order.id,
+            productId: item.Product.id,
+            quantity: item.quantity,
+            priceAtPurchase: discountedPrice,
+          },
+          { transaction }
+        );
+      }
+
+      await transaction.commit();
+      console.log(`🧾 Order ${order.id} created for userId:`, userId);
+    } catch (orderErr) {
+      await transaction.rollback();
+      console.error('❌ Failed to create order record:', orderErr);
+    }
 
     await sendEmail(
       user.email,

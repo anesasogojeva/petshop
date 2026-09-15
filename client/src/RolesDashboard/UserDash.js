@@ -10,7 +10,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import petsBg from '../images/pet9.jpg';
 import UserSidebar from './UserSidebar';
 import SendIcon from '@mui/icons-material/Send';
-import { Link as RouterLink, useLocation } from 'react-router-dom';
+import { Link as RouterLink, useLocation, useSearchParams } from 'react-router-dom';
 import EmptyState from '../components/shared/EmptyState';
 import StatusChip from '../components/shared/StatusChip';
 import TimeSlotPicker from '../components/shared/TimeSlotPicker';
@@ -29,7 +29,15 @@ const UserDash = () => {
   const [pets, setPets] = useState([]);
   const [vets, setVets] = useState([]);
   const location = useLocation();
-  const [selectedTab, setSelectedTab] = useState(location.state?.tab || 'adoptions');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [selectedTab, setSelectedTab] = useState(
+    searchParams.get('tab') || location.state?.tab || 'adoptions'
+  );
+
+  useEffect(() => {
+    setSearchParams({ tab: selectedTab }, { replace: true });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedTab]);
   const [openAddAppointment, setOpenAddAppointment] = useState(false);
   const [availableTimes, setAvailableTimes] = useState([]);
   const [loadingSlots, setLoadingSlots] = useState(false);

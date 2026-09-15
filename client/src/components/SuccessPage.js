@@ -10,7 +10,7 @@ function SuccessPage() {
   const navigate = useNavigate();
   const [secondsLeft, setSecondsLeft] = useState(REDIRECT_SECONDS);
 
-  const goToOrders = () => navigate('/user', { state: { tab: 'orders' } });
+  const goToOrders = () => navigate('/user?tab=orders', { state: { tab: 'orders' } });
 
   useEffect(() => {
     if (hasSent.current) return;
