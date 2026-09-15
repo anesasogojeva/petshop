@@ -18,8 +18,8 @@ router.get('/:id', authenticateToken, authorizeRole('admin'), appointmentControl
 // Update appointment — only admin
 router.put('/:id', authenticateToken, authorizeRole('admin'), appointmentController.updateAppointment);
 
-// Update appointment status only — only admin
-router.patch('/:id/status', authenticateToken, authorizeRole('admin'), appointmentController.updateAppointmentStatus);
+// Update appointment status only — admin or the assigned veterinarian
+router.patch('/:id/status', authenticateToken, authorizeRole(['admin', 'veterinarian']), appointmentController.updateAppointmentStatus);
 
 // Delete appointment — admin or appointment owner
 router.delete('/:id', authenticateToken, appointmentController.deleteAppointment);

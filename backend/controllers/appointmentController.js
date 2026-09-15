@@ -281,6 +281,7 @@ exports.updateAppointmentStatus = async (req, res) => {
   try {
     const appointmentId = req.params.id;
     const { status } = req.body;
+    const { id: userId, role } = req.user;
 
     if (!VALID_STATUSES.includes(status)) {
       return res.status(400).json({ message: `Status must be one of: ${VALID_STATUSES.join(', ')}` });
@@ -289,6 +290,13 @@ exports.updateAppointmentStatus = async (req, res) => {
     const appointment = await Appointment.findByPk(appointmentId);
     if (!appointment) {
       return res.status(404).json({ message: 'Appointment not found' });
+    }
+
+    if (role === 'veterinarian') {
+      const veterinarian = await Veterinarian.findOne({ where: { userId } });
+      if (!veterinarian || appointment.veterinarianId !== veterinarian.id) {
+        return res.status(403).json({ message: 'You are not authorized to update this appointment' });
+      }
     }
 
     appointment.status = status;

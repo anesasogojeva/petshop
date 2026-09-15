@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import {
   Box, Typography, AppBar, Toolbar, Table, TableBody, TableCell, TableContainer,
   TableHead, TableRow, TablePagination, Paper, TextField, Button, Grid,
-  Modal, Fade, Backdrop, Snackbar, Alert
+  Modal, Fade, Backdrop, Snackbar, Alert, Select, CircularProgress
 } from '@mui/material';
 import axios from 'axios';
 import UserSidebar from './VetsSide';
@@ -19,6 +19,8 @@ import useTableControls from '../hooks/useTableControls';
 import { getCurrentRole } from '../utils/auth';
 import EventNoteIcon from '@mui/icons-material/EventNote';
 import FolderSharedIcon from '@mui/icons-material/FolderShared';
+
+const APPOINTMENT_STATUSES = ['pending', 'confirmed', 'completed', 'cancelled'];
 
 const modalStyle = {
   position: 'absolute',
@@ -50,6 +52,7 @@ const VetDash = () => {
   const [selectedChatUser, setSelectedChatUser] = useState(null);
   const [userIdToChatId, setUserIdToChatId] = useState({});
   const [message, setMessage] = useState({ open: false, text: '', severity: 'success' });
+  const [updatingStatusId, setUpdatingStatusId] = useState(null);
 
   const showMessage = (text, severity = 'success') => {
     setMessage({ open: true, text, severity });
@@ -187,6 +190,21 @@ const VetDash = () => {
       setSelectedDate(savedDate);
     }
   }, []);
+
+  const handleStatusChange = async (appointment, newStatus) => {
+    if (newStatus === appointment.status) return;
+    setUpdatingStatusId(appointment.id);
+    try {
+      await axios.patch(`${process.env.REACT_APP_API_URL}/api/appointments/${appointment.id}/status`, { status: newStatus }, config);
+      setAppointments((prev) => prev.map((a) => (a.id === appointment.id ? { ...a, status: newStatus } : a)));
+      showMessage('Appointment status updated.');
+    } catch (error) {
+      console.error('Error updating appointment status:', error.response?.data || error.message);
+      showMessage(error.response?.data?.message || 'Failed to update appointment status.', 'error');
+    } finally {
+      setUpdatingStatusId(null);
+    }
+  };
 
   const handleDeleteAppointment = async (id) => {
     try {
@@ -438,12 +456,13 @@ const VetDash = () => {
                     <TableCell>Pet</TableCell>
                     <TableCell>Date</TableCell>
                     <TableCell>Time</TableCell>
+                    <TableCell>Status</TableCell>
                     <TableCell align="right">Actions</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
                   {appointmentsTable.pageRows.length === 0 ? (
-                    <TableRow><TableCell colSpan={5}><EmptyState icon={EventNoteIcon} title="No appointments" description="Your upcoming appointments will show up here." /></TableCell></TableRow>
+                    <TableRow><TableCell colSpan={6}><EmptyState icon={EventNoteIcon} title="No appointments" description="Your upcoming appointments will show up here." /></TableCell></TableRow>
                   ) : (
                     appointmentsTable.pageRows.map((appt) => (
                       <TableRow key={appt.id} hover>
@@ -451,6 +470,22 @@ const VetDash = () => {
                         <TableCell>{appt.Pet?.name || 'N/A'}</TableCell>
                         <TableCell>{appt.Slot?.date || 'N/A'}</TableCell>
                         <TableCell>{appt.Slot?.startTime}</TableCell>
+                        <TableCell>
+                          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                            <Select
+                              size="small"
+                              value={appt.status || 'pending'}
+                              onChange={(e) => handleStatusChange(appt, e.target.value)}
+                              disabled={updatingStatusId === appt.id}
+                              sx={{ minWidth: 140 }}
+                            >
+                              {APPOINTMENT_STATUSES.map((s) => (
+                                <MenuItem key={s} value={s}><StatusChip status={s} /></MenuItem>
+                              ))}
+                            </Select>
+                            {updatingStatusId === appt.id && <CircularProgress size={16} />}
+                          </Box>
+                        </TableCell>
                         <TableCell align="right">
                           <Button variant="outlined" color="error" size="small" onClick={() => handleDeleteAppointment(appt.id)}>
                             Cancel
