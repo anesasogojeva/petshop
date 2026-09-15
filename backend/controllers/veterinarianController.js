@@ -39,7 +39,7 @@ exports.getVeterinarianById = async (req, res) => {
 
 // Update a veterinarian profile by ID
 exports.updateVeterinarian = async (req, res) => {
-  const { specialization, yearsOfExperience, licenseNumber } = req.body;
+  const { specialization, yearsOfExperience, licenseNumber, name, email, password } = req.body;
 
   // Input validation
   const errors = validationResult(req);
@@ -58,7 +58,21 @@ exports.updateVeterinarian = async (req, res) => {
     if (licenseNumber) veterinarian.licenseNumber = licenseNumber;
 
     await veterinarian.save();
-    res.status(200).json(veterinarian);
+
+    if (name || email || password) {
+      const user = await User.findByPk(veterinarian.userId);
+      if (user) {
+        if (name) user.name = name;
+        if (email) user.email = email;
+        if (password) user.password = password;
+        await user.save();
+      }
+    }
+
+    const updated = await Veterinarian.findByPk(veterinarian.id, {
+      include: [{ model: User, attributes: ['id', 'name', 'email', 'role'] }],
+    });
+    res.status(200).json(updated);
   } catch (error) {
     console.error('Error updating veterinarian:', error);
     res.status(500).json({ message: 'An error occurred while updating veterinarian' });

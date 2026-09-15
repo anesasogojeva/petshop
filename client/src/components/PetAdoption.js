@@ -47,6 +47,10 @@ const PetAdoption = () => {
   useEffect(() => {
     applyFilters();
   }, [search, selectedBreed, selectedType, sortOrder, pets, currentPage]);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [currentPage]);
   const token = localStorage.getItem('accessToken');
 
   let decodedToken = null;
