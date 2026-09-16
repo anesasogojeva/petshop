@@ -39,13 +39,25 @@ const User = require('../models/User'); // Sequelize User model
 // };
 
 exports.accessChat = async (req, res) => {
-  const { userId, userId2 } = req.body;
+  const userId = req.user.id;
+  const { userId2 } = req.body;
 
-  if (!userId || !userId2) {
-    return res.status(400).json({ message: 'Missing userId or userId2' });
+  if (!userId2) {
+    return res.status(400).json({ message: 'Missing userId2' });
+  }
+
+  if (Number(userId2) === Number(userId)) {
+    return res.status(400).json({ message: 'Cannot start a chat with yourself' });
   }
 
   try {
+    if (req.user.role === 'user') {
+      const otherUser = await User.findByPk(userId2);
+      if (!otherUser || otherUser.role !== 'veterinarian') {
+        return res.status(403).json({ message: 'You can only message veterinarians' });
+      }
+    }
+
     // Find a chat that includes both users, no more no less
     let chat = await Chat.findOne({
       isGroupChat: false,

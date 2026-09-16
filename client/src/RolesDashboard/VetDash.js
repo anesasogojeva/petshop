@@ -335,28 +335,36 @@ const VetDash = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const chatContacts = users.filter(user => userIdToChatId[user.id] !== undefined);
+
   const renderChat = () => (
     <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, height: { xs: 'auto', md: '70vh' }, width: '100%', maxWidth: 1000, bgcolor: 'background.paper', borderRadius: 2, boxShadow: 1, p: 2 }}>
       <Box sx={{ width: { xs: '100%', md: 250 }, maxHeight: { xs: 160, md: 'none' }, borderRight: { xs: 'none', md: '1px solid' }, borderBottom: { xs: '1px solid', md: 'none' }, borderColor: 'divider', overflowY: 'auto' }}>
         <Typography variant="subtitle1" sx={{ p: 1.5, fontWeight: 700 }}>
-          Users
+          Conversations
         </Typography>
-        {users.map(user => (
-          <Box
-            key={user.id}
-            sx={{
-              p: 1.5,
-              cursor: 'pointer',
-              bgcolor: selectedChatUser?.id === user.id ? 'primary.light' : 'transparent',
-              borderBottom: '1px solid',
-              borderColor: 'divider',
-              '&:hover': { bgcolor: 'action.hover' }
-            }}
-            onClick={() => selectUserForChat(user)}
-          >
-            {user.name || user.email}
-          </Box>
-        ))}
+        {chatContacts.length === 0 ? (
+          <Typography variant="body2" color="text.secondary" sx={{ p: 1.5 }}>
+            No messages yet. Users who message you will show up here.
+          </Typography>
+        ) : (
+          chatContacts.map(user => (
+            <Box
+              key={user.id}
+              sx={{
+                p: 1.5,
+                cursor: 'pointer',
+                bgcolor: selectedChatUser?.id === user.id ? 'primary.light' : 'transparent',
+                borderBottom: '1px solid',
+                borderColor: 'divider',
+                '&:hover': { bgcolor: 'action.hover' }
+              }}
+              onClick={() => selectUserForChat(user)}
+            >
+              {user.name || user.email}
+            </Box>
+          ))
+        )}
       </Box>
 
       <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', height: { xs: '60vh', md: '100%' }, minWidth: 0, pl: { xs: 0, md: 2 }, pt: { xs: 2, md: 0 } }}>
