@@ -417,8 +417,8 @@ const VetDash = () => {
                       wordWrap: 'break-word',
                     }}
                   >
-                    <Typography variant="body2">{msg.content}</Typography>
-                    <Typography variant="caption" display="block" sx={{ fontSize: 10, mt: 0.5, opacity: 0.8 }}>
+                    <Typography variant="body2" sx={{ color: 'inherit' }}>{msg.content}</Typography>
+                    <Typography variant="caption" display="block" sx={{ fontSize: 10, mt: 0.5, opacity: 0.8, color: 'inherit' }}>
                       {msg.timestamp}
                     </Typography>
                   </Box>
