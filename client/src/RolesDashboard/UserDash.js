@@ -257,21 +257,14 @@ const UserDash = () => {
     return formatTimeHHMM(time);
   };
 
-  const isUpcoming = (dateStr) => {
-    if (!dateStr) return true;
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    return new Date(dateStr) >= today;
-  };
-
-  const handleDeleteAppointment = async (id) => {
+  const handleCancelAppointment = async (id) => {
     try {
-      await axios.delete(`${process.env.REACT_APP_API_URL}/api/appointments/${id}`, config);
-      setAppointments(appointments.filter((a) => a.id !== id));
-      showMessage('Appointment deleted successfully.');
+      await axios.patch(`${process.env.REACT_APP_API_URL}/api/appointments/${id}/status`, { status: 'cancelled' }, config);
+      setAppointments((prev) => prev.map((a) => (a.id === id ? { ...a, status: 'cancelled' } : a)));
+      showMessage('Appointment cancelled.');
     } catch (error) {
-      console.error('Error deleting appointment:', error);
-      showMessage('Error deleting appointment.', 'error');
+      console.error('Error cancelling appointment:', error);
+      showMessage(error.response?.data?.message || 'Error cancelling appointment.', 'error');
     }
   };
 
@@ -635,16 +628,14 @@ const UserDash = () => {
                             {a.Pet?.name || 'N/A'} with {a.Veterinarian?.User?.name || vets.find(v => v.id === a.veterinarianId)?.name || 'Unknown'}
                           </Typography>
                         </Box>
-                        {isUpcoming(a.Slot?.date) ? (
-                          <StatusChip status="active" label="Upcoming" />
-                        ) : (
-                          <StatusChip status="completed" label="Past" />
-                        )}
+                        <StatusChip status={a.status || 'pending'} />
                       </Box>
                       <Typography variant="body2" sx={{ mb: 1.5 }}>{a.reason || 'N/A'}</Typography>
-                      <Button variant="outlined" color="error" size="small" onClick={() => handleDeleteAppointment(a.id)}>
-                        Cancel
-                      </Button>
+                      {a.status !== 'cancelled' && a.status !== 'completed' && (
+                        <Button variant="outlined" color="error" size="small" onClick={() => handleCancelAppointment(a.id)}>
+                          Cancel
+                        </Button>
+                      )}
                     </Paper>
                   ))}
                 </Box>
@@ -694,16 +685,14 @@ const UserDash = () => {
                         <TableCell>{a.Veterinarian?.User?.name || vets.find(v => v.id === a.veterinarianId)?.name || 'Unknown'}</TableCell>
                         <TableCell>{a.reason || 'N/A'}</TableCell>
                         <TableCell>
-                          {isUpcoming(a.Slot?.date) ? (
-                            <StatusChip status="active" label="Upcoming" />
-                          ) : (
-                            <StatusChip status="completed" label="Past" />
-                          )}
+                          <StatusChip status={a.status || 'pending'} />
                         </TableCell>
                         <TableCell align="right">
-                          <Button variant="outlined" color="error" size="small" onClick={() => handleDeleteAppointment(a.id)}>
-                            Cancel
-                          </Button>
+                          {a.status !== 'cancelled' && a.status !== 'completed' && (
+                            <Button variant="outlined" color="error" size="small" onClick={() => handleCancelAppointment(a.id)}>
+                              Cancel
+                            </Button>
+                          )}
                         </TableCell>
                       </TableRow>
                     ))

@@ -297,6 +297,13 @@ exports.updateAppointmentStatus = async (req, res) => {
       if (!veterinarian || appointment.veterinarianId !== veterinarian.id) {
         return res.status(403).json({ message: 'You are not authorized to update this appointment' });
       }
+    } else if (role === 'user') {
+      if (appointment.userId !== userId) {
+        return res.status(403).json({ message: 'You are not authorized to update this appointment' });
+      }
+      if (status !== 'cancelled') {
+        return res.status(403).json({ message: 'You can only cancel your own appointments' });
+      }
     }
 
     appointment.status = status;
