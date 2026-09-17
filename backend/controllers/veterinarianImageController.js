@@ -1,8 +1,7 @@
 const Veterinarian      = require('../models/Veterinarian');            // Sequelize
 const VeterinarianImage = require('../models/VeterinarianImage');       // Mongoose
 const mongoose = require('mongoose');
-const fs = require('fs');
-const path = require('path');
+const { uploadImage, deleteImage } = require('../utils/supabaseStorage');
 
 // helper: keep only one primary image per veterinarian
 async function ensureSinglePrimary(veterinarianId, currentImageId) {
@@ -49,7 +48,11 @@ exports.addImage = async (req, res, next) => {
     if (!veterinarian) return res.status(404).json({ msg: 'Veterinarian not found' });
 
     // 2️⃣ Pick image url from upload or body
-    const url = req.file ? req.file.path : req.body.url;
+    let url = req.body.url;
+    if (req.file) {
+      const uploaded = await uploadImage(req.file, 'veterinarians');
+      url = uploaded.url;
+    }
     if (!url) {
       return res.status(400).json({ msg: 'Provide an image file or a url field' });
     }
@@ -111,15 +114,8 @@ exports.deleteImage = async (req, res, next) => {
       return res.status(404).json({ msg: 'Image not found' });
     }
 
-    // 2️⃣ Optionally delete from filesystem if stored locally
-    // Only do this if you know the image is stored locally (not a cloud URL)
-    const isLocalPath = image.url && !image.url.startsWith('http');
-    if (isLocalPath) {
-      const filePath = path.resolve(image.url);
-      if (fs.existsSync(filePath)) {
-        fs.unlinkSync(filePath);
-      }
-    }
+    // 2️⃣ Remove the stored file (no-op if it wasn't a Supabase Storage URL)
+    await deleteImage(image.url);
 
     // 3️⃣ Delete the document from MongoDB
     await VeterinarianImage.deleteOne({ _id: imageId });
