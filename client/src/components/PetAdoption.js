@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../CSS/PetAdoption.css';
 import { resolveImageUrl } from '../utils/resolveImageUrl';
@@ -12,7 +11,6 @@ import Header from './Header';
 import Footer from './Footer';
 
 const PetAdoption = () => {
-  const navigate = useNavigate();
   const [pets, setPets] = useState([]);
   const [modalPet, setModalPet] = useState(null);
   const [search, setSearch] = useState('');
@@ -113,6 +111,10 @@ const config = { headers: { Authorization: `Bearer ${token}` } };
   };
 
   const confirmAdoption = async (petId) => {
+    if (!token) {
+      showMessage('You should be logged in to adopt a pet.', 'error');
+      return;
+    }
     setIsAdopting(true);
     try {
       await axios.post(`${process.env.REACT_APP_API_URL}/api/adoption`, { petId }, {
@@ -134,29 +136,6 @@ const config = { headers: { Authorization: `Bearer ${token}` } };
 
   const breeds = [...new Set(pets.map(p => p.breed))];
   const types = [...new Set(pets.map(p => p.type))];
-  if (!token) {
-    return (
-      <div className="unauthorized-message">
-        <h2>You must be logged in to do this.</h2>
-        <div style={{ marginTop: '1rem' }}>
-          <button onClick={() => navigate('/login')} style={{ marginRight: '1rem' }}>Log In</button>
-          <button onClick={() => navigate('/signup')}>Sign Up</button>
-        </div>
-      </div>
-    );
-  }
-
-  if (!decodedToken) {
-    return (
-      <div className="unauthorized-message">
-        <h2>Invalid or expired token.</h2>
-        <div style={{ marginTop: '1rem' }}>
-          <button onClick={() => navigate('/login')} style={{ marginRight: '1rem' }}>Log In</button>
-          <button onClick={() => navigate('/signup')}>Sign Up</button>
-        </div>
-      </div>
-    );
-  }
 
 
   return (
